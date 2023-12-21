@@ -18,11 +18,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <Script
-          async
-          src="https://eu.umami.is/script.js"
-          data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
-        />
+        {process.env.NODE_ENV === "production" && (
+          <Script
+            async
+            src="https://eu.umami.is/script.js"
+            data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
+          />
+        )}
       </head>
       <body>
         <PageContainer>
