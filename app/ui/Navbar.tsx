@@ -19,7 +19,7 @@ export const Navbar = () => {
   };
 
   return (
-    <div className="flex flex-row justify-between">
+    <div className="flex flex-row justify-between items-center">
       <div>
         <Link
           href={"/"}
@@ -30,7 +30,9 @@ export const Navbar = () => {
         >
           home
         </Link>
-        <span className="mx-5 text-light-text dark:text-dark-text">-</span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
+          -
+        </span>
         <Link
           href={"/about"}
           style={{
@@ -42,7 +44,9 @@ export const Navbar = () => {
         >
           about
         </Link>
-        <span className="mx-5 text-light-text dark:text-dark-text">-</span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
+          -
+        </span>
         <Link
           href={"/blog"}
           style={{
@@ -54,7 +58,9 @@ export const Navbar = () => {
         >
           blog
         </Link>
-        <span className="mx-5 text-light-text dark:text-dark-text">-</span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
+          -
+        </span>
         <Link
           href={"/resume"}
           style={{
@@ -64,7 +70,9 @@ export const Navbar = () => {
         >
           resume
         </Link>
-        <span className="mx-5 text-light-text dark:text-dark-text">-</span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
+          -
+        </span>
         <Link
           href={"/portfolio"}
           style={{
@@ -77,7 +85,7 @@ export const Navbar = () => {
         </Link>
       </div>
       <button
-        className="h-8 w-8 rounded-full bg-dark-background dark:bg-light-background flex justify-center items-center border-none cursor-pointer"
+        className="p-1 rounded-full bg-dark-background dark:bg-light-background flex justify-center items-center border-none cursor-pointer"
         onClick={darkModeToggle}
         aria-label="Dark mode button switcher"
       >
