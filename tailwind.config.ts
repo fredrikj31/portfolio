@@ -22,6 +22,15 @@ const config: Config = {
       link: "#2980b9",
     },
     extend: {},
+    // Breakpoints
+    screens: {
+      sm: "376px",
+      md: "768px",
+      mg: "1080px",
+      lg: "1280px",
+      xl: "1440px",
+      "2xl": "1920px",
+    },
   },
   plugins: [],
 };
