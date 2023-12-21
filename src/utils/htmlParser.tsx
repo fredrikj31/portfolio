@@ -1,4 +1,4 @@
-import parse, { Element, Text } from "html-react-parser";
+import parse, { Element } from "html-react-parser";
 import { FirstHeader } from "@/src/components/blog/FirstHeader";
 import { SecondHeader } from "@/src/components/blog/SecondHeader";
 import { ThirdHeader } from "@/src/components/blog/ThirdHeader";
