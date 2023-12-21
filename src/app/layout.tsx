@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
-import "@/app/ui/global.css";
-import PageContainer from "@/app/ui/PageContainer";
-import Footer from "@/app/ui/Footer";
-import { Navbar } from "./ui/Navbar";
+import "@/src/app/global.css";
+import PageContainer from "@/src/components/PageContainer";
+import Footer from "@/src/components/Footer";
+import { Navbar } from "@/src/components/Navbar";
 import Script from "next/script";
 
 export const metadata: Metadata = {
