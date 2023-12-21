@@ -1,7 +1,7 @@
-import { Header } from "@/src/app/ui/Header";
-import { LatestBlogPosts } from "@/src/app/ui/LatestBlogPosts";
-import { Testimonials } from "@/src/app/ui/Testimonials";
-import { Projects } from "@/src/app/ui/Projects";
+import { Header } from "@/src/components/home/Header";
+import { LatestBlogPosts } from "@/src/components/home/LatestBlogPosts";
+import { Testimonials } from "@/src/components/home/Testimonials";
+import { Projects } from "@/src/components/home/Projects";
 
 export default function Home() {
   return (
