@@ -1,12 +1,12 @@
 import { randomUUID } from "crypto";
 import { Element, Text } from "html-react-parser";
-import { Katex } from "@/src/app/ui/blog/components/Katex";
-import { Strong } from "@/src/app/ui/blog/components/Strong";
-import { Italic } from "@/src/app/ui/blog/components/Italic";
-import { StrikeThrough } from "@/src/app/ui/blog/components/StrikeThrough";
-import { Mark } from "@/src/app/ui/blog/components/Mark";
-import { InlineCode } from "@/src/app/ui/blog/components/InlineCode";
-import { Link } from "@/src/app/ui/blog/components/Link";
+import { Katex } from "@/src/components/blog/Katex";
+import { Strong } from "@/src/components/blog/Strong";
+import { Italic } from "@/src/components/blog/Italic";
+import { StrikeThrough } from "@/src/components/blog/StrikeThrough";
+import { Mark } from "@/src/components/blog/Mark";
+import { InlineCode } from "@/src/components/blog/InlineCode";
+import { Link } from "@/src/components/blog/Link";
 import { BlogComponentProp } from ".";
 
 export const Paragraph = ({ domNode }: BlogComponentProp) => {
