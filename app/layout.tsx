@@ -3,6 +3,7 @@ import "@/app/ui/global.css";
 import PageContainer from "@/app/ui/PageContainer";
 import Footer from "@/app/ui/Footer";
 import { Navbar } from "./ui/Navbar";
+import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Home - Fredrik Johansen",
@@ -16,6 +17,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          async
+          src="https://eu.umami.is/script.js"
+          data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
+        />
+      </head>
       <body>
         <PageContainer>
           <Navbar />
