@@ -1,24 +1,24 @@
 import parse, { Element, Text } from "html-react-parser";
-import { FirstHeader } from "@/app/ui/blog/components/FirstHeader";
-import { SecondHeader } from "@/app/ui/blog/components/SecondHeader";
-import { ThirdHeader } from "@/app/ui/blog/components/ThirdHeader";
-import { Strong } from "@/app/ui/blog/components/Strong";
-import { Italic } from "@/app/ui/blog/components/Italic";
-import { StrikeThrough } from "@/app/ui/blog/components/StrikeThrough";
-import { Mark } from "@/app/ui/blog/components/Mark";
-import { InlineCode } from "@/app/ui/blog/components/InlineCode";
-import { Link } from "@/app/ui/blog/components/Link";
-import { UnorderedList } from "@/app/ui/blog/components/UnorderedList";
-import { OrderedList } from "@/app/ui/blog/components/OrderedList";
-import { Divider } from "@/app/ui/blog/components/Divider";
-import { Code } from "@/app/ui/blog/components/Code";
-import { Blockquote } from "@/app/ui/blog/components/Blockquote";
-import { Details } from "@/app/ui/blog/components/Details";
-import { Table } from "@/app/ui/blog/components/Table";
-import { FigureImage } from "@/app/ui/blog/components/FigureImage";
-import { Callout } from "@/app/ui/blog/components/Callout";
-import { Embed } from "@/app/ui/blog/components/Embed";
-import { Paragraph } from "@/app/ui/blog/components/Paragraph";
+import { FirstHeader } from "@/src/app/ui/blog/components/FirstHeader";
+import { SecondHeader } from "@/src/app/ui/blog/components/SecondHeader";
+import { ThirdHeader } from "@/src/app/ui/blog/components/ThirdHeader";
+import { Strong } from "@/src/app/ui/blog/components/Strong";
+import { Italic } from "@/src/app/ui/blog/components/Italic";
+import { StrikeThrough } from "@/src/app/ui/blog/components/StrikeThrough";
+import { Mark } from "@/src/app/ui/blog/components/Mark";
+import { InlineCode } from "@/src/app/ui/blog/components/InlineCode";
+import { Link } from "@/src/app/ui/blog/components/Link";
+import { UnorderedList } from "@/src/app/ui/blog/components/UnorderedList";
+import { OrderedList } from "@/src/app/ui/blog/components/OrderedList";
+import { Divider } from "@/src/app/ui/blog/components/Divider";
+import { Code } from "@/src/app/ui/blog/components/Code";
+import { Blockquote } from "@/src/app/ui/blog/components/Blockquote";
+import { Details } from "@/src/app/ui/blog/components/Details";
+import { Table } from "@/src/app/ui/blog/components/Table";
+import { FigureImage } from "@/src/app/ui/blog/components/FigureImage";
+import { Callout } from "@/src/app/ui/blog/components/Callout";
+import { Embed } from "@/src/app/ui/blog/components/Embed";
+import { Paragraph } from "@/src/app/ui/blog/components/Paragraph";
 
 export function parseHTML(htmlString: string) {
   const reactElements = parse(htmlString, {

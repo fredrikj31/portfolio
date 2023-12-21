@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import React from "react";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
-import { parseHTML } from "@/app/utils/htmlParser";
+import { parseHTML } from "@/src/app/utils/htmlParser";
 
 // Highlight JS
 hljs.configure({

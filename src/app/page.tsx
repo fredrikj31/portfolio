@@ -1,7 +1,7 @@
-import { Header } from "@/app/ui/Header";
-import { LatestBlogPosts } from "@/app/ui/LatestBlogPosts";
-import { Testimonials } from "@/app/ui/Testimonials";
-import { Projects } from "@/app/ui/Projects";
+import { Header } from "@/src/app/ui/Header";
+import { LatestBlogPosts } from "@/src/app/ui/LatestBlogPosts";
+import { Testimonials } from "@/src/app/ui/Testimonials";
+import { Projects } from "@/src/app/ui/Projects";
 
 export default function Home() {
   return (
