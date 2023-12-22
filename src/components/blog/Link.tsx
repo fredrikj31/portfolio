@@ -9,7 +9,10 @@ export const Link = ({ domNode }: BlogComponentProp) => {
       domNode.attributes.find((attribute) => attribute.name === "href")
         ?.value || "#";
     return (
-      <NextLink className="text-link underline" href={link}>
+      <NextLink
+        className="text-light-link dark:text-dark-link underline"
+        href={link}
+      >
         {text}
       </NextLink>
     );
