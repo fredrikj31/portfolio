@@ -10,16 +10,25 @@ export const Header = () => {
         I&apos;m a self-taught software developer who specializes in mostly in
         backend, but also a little less on frontend development. I also write
         about different programming hrefpic over on my{" "}
-        <Link href={"/blog"} className="text-link">
+        <Link
+          href={"/blog"}
+          className="text-light-link dark:text-dark-link underline"
+        >
           blog
         </Link>
         . Hop over href my{" "}
-        <Link href={"/portfolio"} className="text-link">
+        <Link
+          href={"/portfolio"}
+          className="text-light-link dark:text-dark-link underline"
+        >
           portfolio
         </Link>
         , href see what I spend my off-hours working on. If you&apos;re more
         interested in my professional career, check out my{" "}
-        <Link href={"/resume"} className="text-link">
+        <Link
+          href={"/resume"}
+          className="text-light-link dark:text-dark-link underline"
+        >
           resume
         </Link>{" "}
         for all the relevant information there.

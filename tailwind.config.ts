@@ -12,14 +12,15 @@ const config: Config = {
       "light-background": "#FFFFFF",
       "light-header": "#333333",
       "light-text": "#555555",
+      "light-link": "#005A9E",
       "dark-background": "#222222",
       "dark-header": "#FFFFFF",
       "dark-text": "#CCCCCC",
+      "dark-link": "#90B0D0",
 
       primary: "#3498db",
       secondary: "#2ecc71",
       highlight: "#f1c40f",
-      link: "#2980b9",
     },
     extend: {},
     // Breakpoints
