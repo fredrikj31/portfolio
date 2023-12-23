@@ -7,7 +7,28 @@ import Script from "next/script";
 
 export const metadata: Metadata = {
   title: "Home - Fredrik Johansen",
-  description: "Fredrik Johansen's personal website",
+  description:
+    "A self-taught software developer from Denmark, which uses his spare time to create side-projects and write technical blog posts.",
+  authors: { name: "Fredrik Johansen" },
+  category: "software development",
+  keywords: [
+    "software development",
+    "development",
+    "engineering",
+    "technical",
+    "programming",
+    "self-taught",
+    "blog",
+    "portfolio",
+  ],
+  metadataBase: new URL("https://fredrikjohansen.dev"),
+  alternates: {
+    canonical: "/",
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
