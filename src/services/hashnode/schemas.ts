@@ -44,3 +44,15 @@ export const BlogPostSeoSchema = z.object({
   }),
 });
 export type BlogPostSeo = z.infer<typeof BlogPostSeoSchema>;
+
+export const BlogPostPreviewSchema = z.object({
+  publishedAt: z.string().datetime(),
+  updatedAt: z.string().datetime().optional(),
+  slug: z.string(),
+  title: z.string(),
+  content: z.object({
+    text: z.string(),
+  }),
+  readTimeInMinutes: z.number(),
+});
+export type BlogPostPreview = z.infer<typeof BlogPostPreviewSchema>;
