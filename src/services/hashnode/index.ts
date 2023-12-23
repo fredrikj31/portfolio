@@ -3,3 +3,4 @@ export const HASHNODE_BLOG_DOMAIN = "fredrikj31.hashnode.dev";
 
 export { getBlogPost } from "./handlers/getBlogPost";
 export { getSitemapBlogPosts } from "./handlers/getSitemapBlogPosts";
+export { getBlogPostSeo } from "./handlers/getBlogPostSeo";
