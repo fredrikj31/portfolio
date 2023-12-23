@@ -19,7 +19,28 @@ export type BlogPost = z.infer<typeof BlogPostSchema>;
 
 export const SitemapBlogPostSchema = z.object({
   publishedAt: z.string().datetime(),
-  updatedAt: z.string().datetime().nullable(),
+  updatedAt: z.string().datetime().optional(),
   slug: z.string(),
 });
 export type SitemapBlogPost = z.infer<typeof SitemapBlogPostSchema>;
+
+export const BlogPostSeoSchema = z.object({
+  slug: z.string(),
+  title: z.string(),
+  subtitle: z.string(),
+  publishedAt: z.string().datetime(),
+  updatedAt: z.string().datetime().optional(),
+  tags: BlogPostTagSchema.array(),
+  readTimeInMinutes: z.number(),
+  coverImage: z.object({
+    url: z.string(),
+  }),
+  ogMetaData: z.object({
+    image: z.string().optional(),
+  }),
+  seo: z.object({
+    title: z.string().optional(),
+    description: z.string().optional(),
+  }),
+});
+export type BlogPostSeo = z.infer<typeof BlogPostSeoSchema>;
