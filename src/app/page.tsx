@@ -5,7 +5,7 @@ import { Projects } from "@/src/components/home/Projects";
 import { listBlogPosts } from "../services/hashnode";
 
 export default async function Home() {
-  const latestBlogPosts = await listBlogPosts();
+  const latestBlogPosts = await listBlogPosts({ numberOfPosts: 3 });
 
   return (
     <>
