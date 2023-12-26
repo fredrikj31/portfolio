@@ -1,4 +1,4 @@
-import { BlogPosts } from "@/src/components/home/BlogPosts";
+import { BlogPosts } from "@/src/components/common/BlogPosts";
 import { listBlogPosts } from "@/src/services/hashnode";
 import { Metadata } from "next";
 

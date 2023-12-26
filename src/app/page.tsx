@@ -1,5 +1,5 @@
 import { Header } from "@/src/components/home/Header";
-import { BlogPosts } from "@/src/components/home/BlogPosts";
+import { BlogPosts } from "@/src/components/common/BlogPosts";
 import { Testimonials } from "@/src/components/home/Testimonials";
 import { Projects } from "@/src/components/home/Projects";
 import { listBlogPosts } from "../services/hashnode";

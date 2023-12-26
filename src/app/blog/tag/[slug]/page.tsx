@@ -1,4 +1,4 @@
-import { BlogPosts } from "@/src/components/home/BlogPosts";
+import { BlogPosts } from "@/src/components/common/BlogPosts";
 import { listBlogPostsByTag } from "@/src/services/hashnode";
 
 type Props = {
