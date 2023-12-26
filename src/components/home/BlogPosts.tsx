@@ -2,11 +2,11 @@ import { BlogPostPreview } from "@/src/services/hashnode/schemas";
 import { DateTime } from "luxon";
 import Link from "next/link";
 
-interface LatestBlogPostsProps {
+interface BlogPostsProps {
   blogPosts: BlogPostPreview[];
 }
 
-export const LatestBlogPosts = ({ blogPosts }: LatestBlogPostsProps) => {
+export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
   return (
     <div className="flex flex-col gap-5">
       {blogPosts.map((blogPost, index) => {
