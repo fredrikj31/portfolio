@@ -11,6 +11,9 @@ export default async function Home() {
     <>
       <Header />
       <div className="py-4" />
+      <h2 className="text-3xl text-light-header dark:text-dark-header mb-3">
+        Latest Blog Posts📝
+      </h2>
       <LatestBlogPosts blogPosts={latestBlogPosts} />
       <div className="py-4" />
       <Testimonials />
