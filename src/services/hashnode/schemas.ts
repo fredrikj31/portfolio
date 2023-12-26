@@ -50,6 +50,7 @@ export const BlogPostPreviewSchema = z.object({
   updatedAt: z.string().datetime().optional().nullable(),
   slug: z.string(),
   title: z.string(),
+  tags: BlogPostTagSchema.array(),
   content: z.object({
     text: z.string(),
   }),

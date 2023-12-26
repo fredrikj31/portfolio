@@ -1,13 +1,15 @@
 import { HASHNODE_API_HOST, HASHNODE_BLOG_DOMAIN } from "..";
 import { BlogPostPreview, BlogPostPreviewSchema } from "../schemas";
 
-interface ListBlogPostsOptions {
+interface ListBlogPostsByTagOptions {
+  tagSlug: string;
   numberOfPosts: number;
 }
 
-export const listBlogPosts = async ({
+export const listBlogPostsByTag = async ({
+  tagSlug,
   numberOfPosts,
-}: ListBlogPostsOptions): Promise<BlogPostPreview[]> => {
+}: ListBlogPostsByTagOptions): Promise<BlogPostPreview[]> => {
   const blogPosts: BlogPostPreview[] = [];
   let continueToken: string = "";
 
@@ -22,7 +24,13 @@ export const listBlogPosts = async ({
         query: `
           query {
             publication(host: "${HASHNODE_BLOG_DOMAIN}") {
-              posts(first: ${numberOfPosts}, after: "${continueToken}") {
+              posts(
+                first: ${numberOfPosts}, 
+                after: "${continueToken}"
+                filter: {
+                	tagSlugs: "${tagSlug}"
+              	}
+              ) {
                 pageInfo {
                   hasNextPage
                   endCursor
