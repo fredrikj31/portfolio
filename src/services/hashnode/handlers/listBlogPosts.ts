@@ -30,7 +30,8 @@ export const listBlogPosts = async ({
                 edges {
                   node {
                     slug
-                    title,
+                    title
+                    tags {name}
                     content {text}
                     readTimeInMinutes
                     publishedAt
