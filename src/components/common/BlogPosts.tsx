@@ -28,6 +28,25 @@ export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
             <p className="text-light-text dark:text-dark-text max-h-32 line-clamp-3">
               {blogPost.content.text}
             </p>
+            {blogPost.tags.length > 0 && (
+              <div className="flex flex-row gap-2 mt-1">
+                {blogPost.tags.map((blogTag, index) => {
+                  return (
+                    <Link
+                      href={`/blog/tag/${blogTag.name
+                        .toLowerCase()
+                        .replaceAll(/google/g, "") // Special case with "google"
+                        .trim()
+                        .replaceAll(" ", "-")}`}
+                      key={index}
+                      className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
+                    >
+                      {blogTag.name}
+                    </Link>
+                  );
+                })}
+              </div>
+            )}
           </div>
         );
       })}
