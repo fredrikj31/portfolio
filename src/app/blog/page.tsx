@@ -13,7 +13,7 @@ export default async function BlogPage() {
     <>
       <div className="mt-10">
         <h1 className="text-4xl text-light-header dark:text-dark-header mb-3">
-          Blog Posts📝
+          Blog Posts✒️
         </h1>
         <BlogPosts blogPosts={blogPosts} />
       </div>
