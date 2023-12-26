@@ -5,3 +5,4 @@ export { getBlogPost } from "./handlers/getBlogPost";
 export { getSitemapBlogPosts } from "./handlers/getSitemapBlogPosts";
 export { getBlogPostSeo } from "./handlers/getBlogPostSeo";
 export { listBlogPosts } from "./handlers/listBlogPosts";
+export { listBlogPostsByTag } from "./handlers/listBlogPostsByTag";
