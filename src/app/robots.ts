@@ -5,7 +5,12 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/favicon.ico", "/blog/sponsor"],
+      disallow: [
+        "/favicon.ico",
+        "/blog/sponsor",
+        "/blog/",
+        "http://fredrikjohansen.dev/",
+      ],
     },
     sitemap: "https://fredrikjohansen.dev/sitemap.xml",
   };
