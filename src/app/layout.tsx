@@ -21,10 +21,6 @@ export const metadata: Metadata = {
     "blog",
     "portfolio",
   ],
-  metadataBase: new URL("https://fredrikjohansen.dev"),
-  alternates: {
-    canonical: "/",
-  },
   robots: {
     index: true,
     follow: true,
