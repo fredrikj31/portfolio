@@ -4,14 +4,19 @@ import katex from "katex";
 import { sanityImageUrl } from "@/src/services/sanity";
 import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
+import hljs from "highlight.js";
+import "highlight.js/styles/github-dark.css";
 
 export const richTextComponents: Partial<PortableTextReactComponents> = {
   types: {
-    code: ({ value }) => (
-      <pre className="text-base bg-light-header text-dark-text p-2 rounded my-1">
-        <code className={`lang-${value.language}`}>{value.code}</code>
-      </pre>
-    ),
+    code: ({ value }) => {
+      const highlightedCode = hljs.highlightAuto(value.code, [value.language]);
+      return (
+        <pre className="text-base bg-light-header text-dark-text p-2 rounded my-1">
+          <code dangerouslySetInnerHTML={{ __html: highlightedCode.value }} />
+        </pre>
+      );
+    },
     table: ({ value }) => {
       const rows: { cells: string[] }[] = value.rows;
       const headerRow = rows[0];

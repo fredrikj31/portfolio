@@ -1,16 +1,9 @@
 import { DateTime } from "luxon";
 import React from "react";
-import hljs from "highlight.js";
-import "highlight.js/styles/github-dark.css";
 import { Metadata } from "next";
 import { getBlogPost, getBlogPostSeo } from "@/src/services/sanity";
 import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
-
-// Highlight JS
-hljs.configure({
-  classPrefix: "lang",
-});
 
 type Props = {
   params: { slug: string };
