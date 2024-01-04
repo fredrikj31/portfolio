@@ -150,7 +150,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       </h5>
     ),
     h6: ({ children }) => (
-      <h6 className="text-base font-bold text-light-header dark:text-dark-header">
+      <h6 className="text-base text-light-header dark:text-dark-header">
         {children}
       </h6>
     ),
