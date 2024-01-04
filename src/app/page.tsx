@@ -3,9 +3,13 @@ import { BlogPosts } from "@/src/components/common/BlogPosts";
 import { Testimonials } from "@/src/components/home/Testimonials";
 import { Projects } from "@/src/components/home/Projects";
 import { listBlogPosts } from "../services/hashnode";
+import { listBlogPosts as sanityListBlogPosts } from "../services/sanity";
 
 export default async function Home() {
   const latestBlogPosts = await listBlogPosts({ numberOfPosts: 3 });
+  const sanityBlogPosts = await sanityListBlogPosts();
+
+  console.log("sanityBlogPosts", sanityBlogPosts);
 
   return (
     <>
