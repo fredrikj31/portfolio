@@ -1,12 +1,12 @@
 import { MetadataRoute } from "next";
-import { getSitemapBlogPosts } from "@/src/services/hashnode";
+import { listBlogPostSitemap } from "@/src/services/sanity";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = await getSitemapBlogPosts();
+  const blogPosts = await listBlogPostSitemap();
 
   const blogPostsSiteMap: MetadataRoute.Sitemap = blogPosts.map((blogPost) => ({
     url: `https://fredrikjohansen.dev/blog/${blogPost.slug}`,
-    lastModified: blogPost.updatedAt || blogPost.publishedAt,
+    lastModified: blogPost.releaseDate,
     changeFrequency: "daily",
     priority: 0.8,
   }));

@@ -1,16 +1,17 @@
 import { SanityClient } from "next-sanity";
 import { BlogPostPreview, BlogPostPreviewSchema } from "../schemas";
 
-export interface ListBlogPostsOptions {
+export interface ListBlogPostsByTagOptions {
+  tag: string;
   limit: number;
 }
 
-export const listBlogPosts = async (
+export const listBlogPostsByTag = async (
   client: SanityClient,
-  opts: ListBlogPostsOptions
+  opts: ListBlogPostsByTagOptions
 ): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(`
-    *[_type == 'blog'] | order(released) {
+    *[_type == 'blog' && '${opts.tag}' in tags] | order(released) {
       "slug": slug.current,
       title,
       "releaseDate": released,

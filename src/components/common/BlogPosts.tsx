@@ -1,4 +1,4 @@
-import { BlogPostPreview } from "@/src/services/hashnode/schemas";
+import { BlogPostPreview } from "@/src/services/sanity/schemas";
 import { DateTime } from "luxon";
 import Link from "next/link";
 
@@ -10,8 +10,9 @@ export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
   return (
     <div className="flex flex-col gap-5">
       {blogPosts.map((blogPost, index) => {
-        const releasedDate = DateTime.fromISO(
-          blogPost.updatedAt || blogPost.publishedAt
+        const releasedDate = DateTime.fromFormat(
+          blogPost.releaseDate,
+          "yyyy-MM-dd"
         ).toFormat("LLL dd, yyyy");
 
         return (
@@ -26,14 +27,14 @@ export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
               ⋅ {blogPost.readTimeInMinutes} min
             </h4>
             <p className="text-light-text dark:text-dark-text max-h-32 line-clamp-3">
-              {blogPost.content.text}
+              {blogPost.previewText}
             </p>
             {blogPost.tags.length > 0 && (
               <div className="flex flex-row gap-2 mt-1">
                 {blogPost.tags.map((blogTag, index) => {
                   return (
                     <Link
-                      href={`/blog/tag/${blogTag.name
+                      href={`/blog/tag/${blogTag
                         .toLowerCase()
                         .replaceAll(/google/g, "") // Special case with "google"
                         .trim()
@@ -41,7 +42,7 @@ export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
                       key={index}
                       className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
                     >
-                      {blogTag.name}
+                      {blogTag}
                     </Link>
                   );
                 })}
