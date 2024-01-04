@@ -1,5 +1,5 @@
 import { BlogPosts } from "@/src/components/common/BlogPosts";
-import { listBlogPosts } from "@/src/services/hashnode";
+import { listBlogPosts } from "@/src/services/sanity";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const blogPosts = await listBlogPosts({ numberOfPosts: 10 });
+  const blogPosts = await listBlogPosts({ limit: 10 });
 
   return (
     <>

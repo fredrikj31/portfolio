@@ -1,5 +1,5 @@
 import { BlogPosts } from "@/src/components/common/BlogPosts";
-import { listBlogPostsByTag } from "@/src/services/hashnode";
+import { listBlogPostsByTag } from "@/src/services/sanity";
 
 type Props = {
   params: { slug: string };
@@ -7,8 +7,8 @@ type Props = {
 
 export default async function BlogPostTagsPage({ params }: Props) {
   const blogPosts = await listBlogPostsByTag({
-    tagSlug: params.slug,
-    numberOfPosts: 10,
+    tag: params.slug,
+    limit: 10,
   });
 
   return (

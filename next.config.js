@@ -10,15 +10,9 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "cdn.hashnode.com",
+        hostname: "cdn.sanity.io",
         port: "",
-        pathname: "/res/hashnode/image/upload/**",
-      },
-      {
-        protocol: "https",
-        hostname: "cdn.pixabay.com",
-        port: "",
-        pathname: "/photo/**",
+        pathname: "/images/**",
       },
     ],
   },
