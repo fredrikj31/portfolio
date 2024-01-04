@@ -8,7 +8,7 @@ import { getImageDimensions } from "@sanity/asset-utils";
 export const richTextComponents: Partial<PortableTextReactComponents> = {
   types: {
     code: ({ value }) => (
-      <pre className="text-base bg-light-header text-dark-text p-2 rounded">
+      <pre className="text-base bg-light-header text-dark-text p-2 rounded my-1">
         <code className={`lang-${value.language}`}>{value.code}</code>
       </pre>
     ),
@@ -16,7 +16,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       const rows: { cells: string[] }[] = value.rows;
       const headerRow = rows[0];
       return (
-        <table className="table-auto w-full text-light-text dark:text-dark-text">
+        <table className="table-auto w-full text-light-text dark:text-dark-text my-1">
           <thead className="bg-light-header/20 dark:bg-dark-header/20">
             <tr>
               {headerRow.cells.map((headerRowCell: string, index) => (
@@ -42,14 +42,14 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       });
       return (
         <p
-          className="text-base text-light-text dark:text-dark-text my-2 text-center"
+          className="text-base text-light-text dark:text-dark-text my-1 text-center"
           dangerouslySetInnerHTML={{ __html: renderedKatex }}
         />
       );
     },
     image: ({ value }) => {
       return (
-        <figure className="flex flex-col items-center w-full">
+        <figure className="flex flex-col items-center w-full my-1">
           <Image
             src={sanityImageUrl(value).url()}
             alt={value.alt}
@@ -113,12 +113,12 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside text-light-text dark:text-dark-text">
+      <ul className="list-disc list-inside text-light-text dark:text-dark-text my-1">
         {children}
       </ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside text-light-text dark:text-dark-text">
+      <ol className="list-decimal list-inside text-light-text dark:text-dark-text my-1">
         {children}
       </ol>
     ),
@@ -155,12 +155,12 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       </h6>
     ),
     normal: ({ children }) => (
-      <p className="text-base text-light-text dark:text-dark-text my-2">
+      <p className="text-base text-light-text dark:text-dark-text my-1">
         {children}
       </p>
     ),
     blockquote: ({ children }) => (
-      <blockquote className="px-2 py-1 my-4 border-l-4 border-light-text dark:border-dark-text bg-light-header/10 dark:bg-dark-header/10 text-light-text dark:text-dark-text rounded">
+      <blockquote className="px-2 py-1 my-1 border-l-4 border-light-text dark:border-dark-text bg-light-header/10 dark:bg-dark-header/10 text-light-text dark:text-dark-text rounded">
         {children}
       </blockquote>
     ),
