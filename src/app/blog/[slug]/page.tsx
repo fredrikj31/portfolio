@@ -4,6 +4,7 @@ import { Metadata } from "next";
 import { blog } from "@/src/services/sanity";
 import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
+import Link from "next/link";
 
 type Props = {
   params: { slug: string };
@@ -57,12 +58,13 @@ export default async function BlogPostPage({ params }: Props) {
       />
       <div className="flex flex-row gap-3">
         {blogPost.tags.map((tag, index: number) => (
-          <span
+          <Link
+            href={`/blog/tag/${tag.toLowerCase().trim().replaceAll(" ", "-")}`}
             key={index}
             className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
           >
             {tag}
-          </span>
+          </Link>
         ))}
       </div>
     </>
