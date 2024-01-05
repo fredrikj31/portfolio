@@ -1,5 +1,5 @@
 import { SanityClient } from "next-sanity";
-import { BlogPost, BlogPostSchema } from "../schemas";
+import { BlogPost, BlogPostSchema } from "./schemas";
 
 export interface GetBlogPostOptions {
   slug: string;

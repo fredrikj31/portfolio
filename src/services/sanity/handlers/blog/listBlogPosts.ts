@@ -1,5 +1,5 @@
 import { SanityClient } from "next-sanity";
-import { BlogPostPreview, BlogPostPreviewSchema } from "../schemas";
+import { BlogPostPreview, BlogPostPreviewSchema } from "./schemas";
 
 export interface ListBlogPostsOptions {
   limit: number;
