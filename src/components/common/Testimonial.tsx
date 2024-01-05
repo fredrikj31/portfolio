@@ -8,7 +8,7 @@ export const Testimonial = ({ testimonial: { author, company, position, social, 
   return (
     <div className="flex flex-col gap-4">
       <blockquote className="flex flex-col">
-        <p className="text-light-text dark:text-dark-text italic mb-2">“{testimonial}”</p>
+        <p className="text-light-text dark:text-dark-text italic">“{testimonial}”</p>
         <footer className="flex flex-col">
           <div className="flex flex-row">
             <cite className="text-light-text dark:text-dark-text not-italic">{author}</cite>

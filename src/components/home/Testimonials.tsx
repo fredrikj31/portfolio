@@ -7,10 +7,10 @@ interface TestimonialsProps {
 
 export const Testimonials = ({ testimonials }: TestimonialsProps) => {
   return (
-    <>
+    <div className="flex flex-col gap-5">
       {testimonials.map((testimonial, index) => (
         <Testimonial key={index} testimonial={testimonial} />
       ))}
-    </>
+    </div>
   );
 };
