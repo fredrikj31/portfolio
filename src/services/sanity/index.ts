@@ -1,23 +1,11 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-import {
-  listBlogPosts as sanityListBlogPosts,
-  ListBlogPostsOptions,
-} from "./handlers/listBlogPosts";
-import {
-  listBlogPostsByTag as sanityListBlogPostsByTag,
-  ListBlogPostsByTagOptions,
-} from "./handlers/listBlogPostsByTag";
-import {
-  getBlogPostSeo as sanityGetBlogPostSeo,
-  GetBlogPostSeoOptions,
-} from "./handlers/getBlogPostSeo";
+import { listBlogPosts, ListBlogPostsOptions } from "./handlers/listBlogPosts";
+import { listBlogPostsByTag, ListBlogPostsByTagOptions } from "./handlers/listBlogPostsByTag";
+import { getBlogPostSeo, GetBlogPostSeoOptions } from "./handlers/getBlogPostSeo";
 
-import {
-  getBlogPost as sanityGetBlogPost,
-  GetBlogPostOptions,
-} from "./handlers/getBlogPost";
-import { listBlogPostsForSitemap as sanityListBlogPostsForSitemap } from "./handlers/listBlogPostsForSitemap";
+import { getBlogPost, GetBlogPostOptions } from "./handlers/getBlogPost";
+import { listBlogPostsForSitemap } from "./handlers/listBlogPostsForSitemap";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -35,16 +23,24 @@ export const sanityImageUrl = (source: string) => {
   return builder.image(source);
 };
 
-export const listBlogPosts = (opts: ListBlogPostsOptions) =>
-  sanityListBlogPosts(client, opts);
+export const blog = {
+  listBlogPosts: async (options: ListBlogPostsOptions) => {
+    return await listBlogPosts(client, options);
+  },
 
-export const listBlogPostsByTag = (opts: ListBlogPostsByTagOptions) =>
-  sanityListBlogPostsByTag(client, opts);
+  listBlogPostsByTag: async (options: ListBlogPostsByTagOptions) => {
+    return await listBlogPostsByTag(client, options);
+  },
 
-export const getBlogPostSeo = (opts: GetBlogPostSeoOptions) =>
-  sanityGetBlogPostSeo(client, opts);
+  getBlogPostSeo: async (options: GetBlogPostSeoOptions) => {
+    return await getBlogPostSeo(client, options);
+  },
 
-export const getBlogPost = (opts: GetBlogPostOptions) =>
-  sanityGetBlogPost(client, opts);
+  getBlogPost: async (options: GetBlogPostOptions) => {
+    return await getBlogPost(client, options);
+  },
 
-export const listBlogPostSitemap = () => sanityListBlogPostsForSitemap(client);
+  listBlogPostSitemap: async () => {
+    return await listBlogPostsForSitemap(client);
+  },
+};
