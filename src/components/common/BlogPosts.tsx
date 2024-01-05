@@ -1,4 +1,4 @@
-import { BlogPostPreview } from "@/src/services/sanity/schemas";
+import { BlogPostPreview } from "@/src/services/sanity/handlers/blog/schemas";
 import { DateTime } from "luxon";
 import Link from "next/link";
 
