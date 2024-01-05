@@ -1,11 +1,12 @@
 import { createClient } from "next-sanity";
 import imageUrlBuilder from "@sanity/image-url";
-import { listBlogPosts, ListBlogPostsOptions } from "./handlers/listBlogPosts";
-import { listBlogPostsByTag, ListBlogPostsByTagOptions } from "./handlers/listBlogPostsByTag";
-import { getBlogPostSeo, GetBlogPostSeoOptions } from "./handlers/getBlogPostSeo";
+import { listBlogPosts, ListBlogPostsOptions } from "./handlers/blog/listBlogPosts";
+import { listBlogPostsByTag, ListBlogPostsByTagOptions } from "./handlers/blog/listBlogPostsByTag";
+import { getBlogPostSeo, GetBlogPostSeoOptions } from "./handlers/blog/getBlogPostSeo";
 
-import { getBlogPost, GetBlogPostOptions } from "./handlers/getBlogPost";
-import { listBlogPostsForSitemap } from "./handlers/listBlogPostsForSitemap";
+import { getBlogPost, GetBlogPostOptions } from "./handlers/blog/getBlogPost";
+import { listBlogPostsForSitemap } from "./handlers/blog/listBlogPostsForSitemap";
+import { listTestimonials, ListTestimonialsOptions } from "./handlers/testimonial/listTestimonials";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -42,5 +43,11 @@ export const blog = {
 
   listBlogPostSitemap: async () => {
     return await listBlogPostsForSitemap(client);
+  },
+};
+
+export const testimonial = {
+  listTestimonials: async (options: ListTestimonialsOptions) => {
+    return await listTestimonials(client, options);
   },
 };
