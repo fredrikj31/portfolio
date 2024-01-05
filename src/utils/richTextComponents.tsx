@@ -88,9 +88,9 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     ),
     link: ({ value, children }) => {
       return (
-        <Link className="text-light-link dark:text-dark-link underline" target="_blank" href={value.href}>
+        <a className="text-light-link dark:text-dark-link underline" target="_blank" href={value.href}>
           {children}
-        </Link>
+        </a>
       );
     },
   },
