@@ -29,11 +29,7 @@ export const BlogPosts = ({ blogPosts }: BlogPostsProps) => {
                 {blogPost.tags.map((blogTag, index) => {
                   return (
                     <Link
-                      href={`/blog/tag/${blogTag
-                        .toLowerCase()
-                        .replaceAll(/google/g, "") // Special case with "google"
-                        .trim()
-                        .replaceAll(" ", "-")}`}
+                      href={`/blog/tag/${blogTag.toLowerCase().trim().replaceAll(" ", "-")}`}
                       key={index}
                       className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
                     >
