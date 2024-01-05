@@ -5,10 +5,7 @@ export interface GetBlogPostOptions {
   slug: string;
 }
 
-export const getBlogPost = async (
-  client: SanityClient,
-  opts: GetBlogPostOptions
-): Promise<BlogPost> => {
+export const getBlogPost = async (client: SanityClient, opts: GetBlogPostOptions): Promise<BlogPost> => {
   const post = await client.fetch(`
     *[_type == 'blog' && slug.current == '${opts.slug}'] | order(released) {
       title,

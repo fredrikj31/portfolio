@@ -5,10 +5,7 @@ export interface ListBlogPostsOptions {
   limit: number;
 }
 
-export const listBlogPosts = async (
-  client: SanityClient,
-  opts: ListBlogPostsOptions
-): Promise<BlogPostPreview[]> => {
+export const listBlogPosts = async (client: SanityClient, opts: ListBlogPostsOptions): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(`
     *[_type == 'blog'] | order(released) {
       "slug": slug.current,

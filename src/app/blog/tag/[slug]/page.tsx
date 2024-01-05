@@ -1,12 +1,12 @@
 import { BlogPosts } from "@/src/components/common/BlogPosts";
-import { listBlogPostsByTag } from "@/src/services/sanity";
+import { blog } from "@/src/services/sanity";
 
 type Props = {
   params: { slug: string };
 };
 
 export default async function BlogPostTagsPage({ params }: Props) {
-  const blogPosts = await listBlogPostsByTag({
+  const blogPosts = await blog.listBlogPostsByTag({
     tag: params.slug,
     limit: 10,
   });

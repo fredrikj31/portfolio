@@ -30,37 +30,27 @@ export const Navbar = () => {
         >
           home
         </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
-          -
-        </span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
         <Link
           href={"/about"}
           style={{
-            textDecorationLine: pathname.includes("/about")
-              ? "underline"
-              : "none",
+            textDecorationLine: pathname.includes("/about") ? "underline" : "none",
           }}
           className="text-light-text dark:text-dark-text text-xl"
         >
           about
         </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
-          -
-        </span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
         <Link
           href={"/blog"}
           style={{
-            textDecorationLine: pathname.includes("/blog")
-              ? "underline"
-              : "none",
+            textDecorationLine: pathname.includes("/blog") ? "underline" : "none",
           }}
           className="text-light-text dark:text-dark-text text-xl"
         >
           blog
         </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
-          -
-        </span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
         <Link
           href={"/resume"}
           style={{
@@ -70,14 +60,11 @@ export const Navbar = () => {
         >
           resume
         </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">
-          -
-        </span>
+        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
         <Link
           href={"/portfolio"}
           style={{
-            textDecorationLine:
-              pathname === "/portfolio" ? "underline" : "none",
+            textDecorationLine: pathname === "/portfolio" ? "underline" : "none",
           }}
           className="text-light-text dark:text-dark-text text-xl"
         >

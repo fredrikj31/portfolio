@@ -1,8 +1,8 @@
 import { MetadataRoute } from "next";
-import { listBlogPostSitemap } from "@/src/services/sanity";
+import { blog } from "@/src/services/sanity";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const blogPosts = await listBlogPostSitemap();
+  const blogPosts = await blog.listBlogPostSitemap();
 
   const blogPostsSiteMap: MetadataRoute.Sitemap = blogPosts.map((blogPost) => ({
     url: `https://fredrikjohansen.dev/blog/${blogPost.slug}`,

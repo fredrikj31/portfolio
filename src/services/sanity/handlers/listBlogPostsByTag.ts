@@ -8,7 +8,7 @@ export interface ListBlogPostsByTagOptions {
 
 export const listBlogPostsByTag = async (
   client: SanityClient,
-  opts: ListBlogPostsByTagOptions
+  opts: ListBlogPostsByTagOptions,
 ): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(`
     *[_type == 'blog' && '${opts.tag}' in tags] | order(released) {

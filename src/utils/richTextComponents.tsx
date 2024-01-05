@@ -61,44 +61,26 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
             width={getImageDimensions(value).width}
             height={getImageDimensions(value).height}
             placeholder="blur"
-            blurDataURL={sanityImageUrl(value)
-              .width(24)
-              .height(24)
-              .blur(10)
-              .url()}
+            blurDataURL={sanityImageUrl(value).width(24).height(24).blur(10).url()}
             sizes="
                 (max-width: 768px) 100vw,
                 (max-width: 1200px) 50vw,
                 40vw"
           />
           {value.alt && (
-            <figcaption className="text-base italic text-light-text dark:text-dark-text">
-              - {value.alt}
-            </figcaption>
+            <figcaption className="text-base italic text-light-text dark:text-dark-text">- {value.alt}</figcaption>
           )}
         </figure>
       );
     },
   },
   marks: {
-    em: ({ children }) => (
-      <em className="text-base italic text-light-text dark:text-dark-text">
-        {children}
-      </em>
-    ),
+    em: ({ children }) => <em className="text-base italic text-light-text dark:text-dark-text">{children}</em>,
     strong: ({ children }) => (
-      <strong className="text-base font-bold text-light-text dark:text-dark-text">
-        {children}
-      </strong>
+      <strong className="text-base font-bold text-light-text dark:text-dark-text">{children}</strong>
     ),
-    highlight: ({ children }) => (
-      <mark className="text-base text-light-text bg-highlight">{children}</mark>
-    ),
-    s: ({ children }) => (
-      <s className="text-base line-through text-light-text dark:text-dark-text">
-        {children}
-      </s>
-    ),
+    highlight: ({ children }) => <mark className="text-base text-light-text bg-highlight">{children}</mark>,
+    s: ({ children }) => <s className="text-base line-through text-light-text dark:text-dark-text">{children}</s>,
     code: ({ children }) => (
       <code className="text-base text-dark-header px-1 font-semibold dark:text-light-header bg-light-text dark:bg-dark-text">
         {children}
@@ -106,11 +88,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     ),
     link: ({ value, children }) => {
       return (
-        <Link
-          className="text-light-link dark:text-dark-link underline"
-          target="_blank"
-          href={value.href}
-        >
+        <Link className="text-light-link dark:text-dark-link underline" target="_blank" href={value.href}>
           {children}
         </Link>
       );
@@ -118,59 +96,25 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
   },
   list: {
     bullet: ({ children }) => (
-      <ul className="list-disc list-inside text-light-text dark:text-dark-text my-1">
-        {children}
-      </ul>
+      <ul className="list-disc list-inside text-light-text dark:text-dark-text my-1">{children}</ul>
     ),
     number: ({ children }) => (
-      <ol className="list-decimal list-inside text-light-text dark:text-dark-text my-1">
-        {children}
-      </ol>
+      <ol className="list-decimal list-inside text-light-text dark:text-dark-text my-1">{children}</ol>
     ),
   },
   block: {
-    h1: ({ children }) => (
-      <h1 className="text-4xl text-light-header dark:text-dark-header">
-        {children}
-      </h1>
-    ),
-    h2: ({ children }) => (
-      <h2 className="text-3xl text-light-header dark:text-dark-header">
-        {children}
-      </h2>
-    ),
-    h3: ({ children }) => (
-      <h3 className="text-2xl text-light-header dark:text-dark-header">
-        {children}
-      </h3>
-    ),
-    h4: ({ children }) => (
-      <h4 className="text-xl text-light-header dark:text-dark-header">
-        {children}
-      </h4>
-    ),
-    h5: ({ children }) => (
-      <h5 className="text-lg text-light-header dark:text-dark-header">
-        {children}
-      </h5>
-    ),
-    h6: ({ children }) => (
-      <h6 className="text-base text-light-header dark:text-dark-header">
-        {children}
-      </h6>
-    ),
-    normal: ({ children }) => (
-      <p className="text-base text-light-text dark:text-dark-text my-1">
-        {children}
-      </p>
-    ),
+    h1: ({ children }) => <h1 className="text-4xl text-light-header dark:text-dark-header">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-3xl text-light-header dark:text-dark-header">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-2xl text-light-header dark:text-dark-header">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl text-light-header dark:text-dark-header">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg text-light-header dark:text-dark-header">{children}</h5>,
+    h6: ({ children }) => <h6 className="text-base text-light-header dark:text-dark-header">{children}</h6>,
+    normal: ({ children }) => <p className="text-base text-light-text dark:text-dark-text my-1">{children}</p>,
     blockquote: ({ children }) => (
       <blockquote className="px-2 py-1 my-1 border-l-4 border-light-text dark:border-dark-text bg-light-header/10 dark:bg-dark-header/10 text-light-text dark:text-dark-text rounded">
         {children}
       </blockquote>
     ),
-    hr: () => (
-      <hr className="my-2 border text-light-text dark:text-dark-text" />
-    ),
+    hr: () => <hr className="my-2 border text-light-text dark:text-dark-text" />,
   },
 };

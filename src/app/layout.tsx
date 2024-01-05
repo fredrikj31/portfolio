@@ -27,20 +27,12 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head>
         {process.env.NODE_ENV === "production" && (
-          <Script
-            async
-            src="https://eu.umami.is/script.js"
-            data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
-          />
+          <Script async src="https://eu.umami.is/script.js" data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0" />
         )}
       </head>
       <body>
