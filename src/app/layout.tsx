@@ -6,7 +6,7 @@ import { Navbar } from "@/src/components/Navbar";
 import Script from "next/script";
 
 export const metadata: Metadata = {
-  title: "Home - Fredrik Johansen",
+  title: "Fredrik Johansen",
   description:
     "A self-taught software developer from Denmark, which uses his spare time to create side-projects and write technical blog posts.",
   authors: { name: "Fredrik Johansen" },

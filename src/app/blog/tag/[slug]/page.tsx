@@ -1,8 +1,13 @@
 import { BlogPostPreview } from "@/src/components/common/BlogPostPreview";
 import { blog } from "@/src/services/sanity";
+import { Metadata } from "next";
 
 type Props = {
   params: { slug: string };
+};
+
+export const metadata: Metadata = {
+  title: `Blog - Fredrik Johansen`,
 };
 
 export default async function BlogPostTagsPage({ params }: Props) {

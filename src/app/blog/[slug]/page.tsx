@@ -14,7 +14,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blogPostSeo = await blog.getBlogPostSeo({ slug: params.slug });
 
   return {
-    title: blogPostSeo.title,
+    title: `${blogPostSeo.title} | Fredrik Johansen`,
     category: "blog",
     keywords: blogPostSeo.tags,
     metadataBase: new URL("https://fredrikjohansen.dev"),

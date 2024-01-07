@@ -4,6 +4,11 @@ import { LinkHeader } from "@/src/components/home/LinkHeader";
 import { blog, testimonial } from "@/src/services/sanity";
 import { BlogPostPreview } from "@/src/components/common/BlogPostPreview";
 import { Testimonial } from "@/src/components/common/Testimonial";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: `Home - Fredrik Johansen`,
+};
 
 export default async function Home() {
   const latestBlogPosts = await blog.listBlogPosts({ limit: 3 });
