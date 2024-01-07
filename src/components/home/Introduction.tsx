@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const Header = () => {
+export const Introduction = () => {
   return (
     <div className="mt-10">
       <h1 className="text-4xl text-light-header dark:text-dark-header mb-3">Hello World👋</h1>
