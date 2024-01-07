@@ -1,9 +1,9 @@
 import { Introduction } from "@/src/components/home/Introduction";
-import { Testimonials } from "@/src/components/home/Testimonials";
 import { Projects } from "@/src/components/home/Projects";
 import { LinkHeader } from "@/src/components/home/LinkHeader";
-import { blog, testimonial } from "../services/sanity";
+import { blog, testimonial } from "@/src/services/sanity";
 import { BlogPostPreview } from "@/src/components/common/BlogPostPreview";
+import { Testimonial } from "@/src/components/common/Testimonial";
 
 export default async function Home() {
   const latestBlogPosts = await blog.listBlogPosts({ limit: 3 });
@@ -21,7 +21,11 @@ export default async function Home() {
       </div>
       <div className="py-4" />
       <LinkHeader text="Testimonials" emoji="💬" link="/testimonials" />
-      <Testimonials testimonials={testimonials} />
+      <div className="flex flex-col gap-5">
+        {testimonials.map((testimonial, index) => (
+          <Testimonial key={index} testimonial={testimonial} />
+        ))}
+      </div>
       <div className="py-4" />
       <Projects />
     </>
