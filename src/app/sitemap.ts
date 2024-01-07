@@ -42,6 +42,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "daily",
       priority: 0.5,
     },
+    {
+      url: "https://fredrikjohansen.dev/testimonials",
+      lastModified: new Date(),
+      changeFrequency: "daily",
+      priority: 0.5,
+    },
     ...blogPostsSiteMap,
   ];
 }
