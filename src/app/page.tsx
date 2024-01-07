@@ -1,7 +1,8 @@
-import { Header } from "@/src/components/home/Header";
+import { Introduction } from "@/src/components/home/Introduction";
 import { BlogPosts } from "@/src/components/common/BlogPosts";
 import { Testimonials } from "@/src/components/home/Testimonials";
 import { Projects } from "@/src/components/home/Projects";
+import { LinkHeader } from "@/src/components/home/LinkHeader";
 import { blog, testimonial } from "../services/sanity";
 
 export default async function Home() {
@@ -10,12 +11,12 @@ export default async function Home() {
 
   return (
     <>
-      <Header />
+      <Introduction />
       <div className="py-4" />
-      <h2 className="text-3xl text-light-header dark:text-dark-header mb-3">Latest Blog Posts📝</h2>
+      <LinkHeader text="Latest Blog Posts" emoji="📝" link="/blog" />
       <BlogPosts blogPosts={latestBlogPosts} />
       <div className="py-4" />
-      <h2 className="text-3xl text-light-header dark:text-dark-header mb-3">Testimonials💬</h2>
+      <LinkHeader text="Testimonials" emoji="💬" link="/testimonials" />
       <Testimonials testimonials={testimonials} />
       <div className="py-4" />
       <Projects />
