@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPage() {
-  const blogPosts = await blog.listBlogPosts({ limit: 10 });
+  const blogPosts = await blog.listBlogPosts({});
 
   return (
     <>

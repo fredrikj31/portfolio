@@ -3,7 +3,7 @@ import { BlogPostPreview, BlogPostPreviewSchema } from "./schemas";
 
 export interface ListBlogPostsByTagOptions {
   tag: string;
-  limit: number;
+  limit?: number;
 }
 
 export const listBlogPostsByTag = async (
@@ -18,7 +18,7 @@ export const listBlogPostsByTag = async (
       tags,
       "previewText": pt::text(content),
       "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180)
-    }[0..${opts.limit - 1}]
+    }${opts.limit ? `[0..${opts.limit - 1}]` : ""}
   `);
 
   const parsedPosts = BlogPostPreviewSchema.array().parse(posts);

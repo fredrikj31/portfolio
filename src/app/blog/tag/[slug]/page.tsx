@@ -8,7 +8,6 @@ type Props = {
 export default async function BlogPostTagsPage({ params }: Props) {
   const blogPosts = await blog.listBlogPostsByTag({
     tag: params.slug,
-    limit: 10,
   });
 
   return (
