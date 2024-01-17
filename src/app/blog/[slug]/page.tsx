@@ -5,6 +5,7 @@ import { blog } from "@/src/services/sanity";
 import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
@@ -12,6 +13,12 @@ type Props = {
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const blogPostSeo = await blog.getBlogPostSeo({ slug: params.slug });
+
+  if (!blogPostSeo) {
+    return {
+      title: `404 Not Found | Fredrik Johansen`,
+    };
+  }
 
   return {
     title: `${blogPostSeo.title} | Fredrik Johansen`,
@@ -35,6 +42,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function BlogPostPage({ params }: Props) {
   const blogPost = await blog.getBlogPost({ slug: params.slug });
+
+  if (!blogPost) {
+    notFound();
+  }
 
   return (
     <>
