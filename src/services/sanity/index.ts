@@ -7,6 +7,7 @@ import { getBlogPostSeo, GetBlogPostSeoOptions } from "./handlers/blog/getBlogPo
 import { getBlogPost, GetBlogPostOptions } from "./handlers/blog/getBlogPost";
 import { listBlogPostsForSitemap } from "./handlers/blog/listBlogPostsForSitemap";
 import { listTestimonials, ListTestimonialsOptions } from "./handlers/testimonial/listTestimonials";
+import { getAboutContent } from "./handlers/about/getAboutContent";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -49,5 +50,11 @@ export const blog = {
 export const testimonial = {
   listTestimonials: async (options: ListTestimonialsOptions) => {
     return await listTestimonials(client, options);
+  },
+};
+
+export const about = {
+  getAboutContent: async () => {
+    return await getAboutContent(client);
   },
 };
