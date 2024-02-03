@@ -25,7 +25,7 @@ export const Introduction = () => {
         </p>
       </div>
       <Image
-        className="rounded-full w-40 h-40 ml-5"
+        className="rounded-full hidden md:block w-40 h-40 ml-5"
         src={`/assets/me.jpg`}
         width={160}
         height={160}
