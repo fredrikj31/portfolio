@@ -11,7 +11,7 @@ export const listBlogPostsByTag = async (
   opts: ListBlogPostsByTagOptions,
 ): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(`
-    *[_type == 'blog' && '${opts.tag}' in tags] | order(released) {
+    *[_type == 'blogPost' && '${opts.tag}' in tags] | order(released) {
       "slug": slug.current,
       title,
       "releaseDate": released,

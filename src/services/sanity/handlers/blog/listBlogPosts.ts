@@ -8,7 +8,7 @@ export interface ListBlogPostsOptions {
 export const listBlogPosts = async (client: SanityClient, opts: ListBlogPostsOptions): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(
     `
-      *[_type == 'blog'] | order(released desc) {
+      *[_type == 'blogPost'] | order(released desc) {
         "slug": slug.current,
         title,
         "releaseDate": released,
