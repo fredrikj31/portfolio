@@ -7,7 +7,7 @@ export interface GetBlogPostOptions {
 
 export const getBlogPost = async (client: SanityClient, opts: GetBlogPostOptions): Promise<BlogPost> => {
   const post = await client.fetch(`
-    *[_type == 'blog' && slug.current == '${opts.slug}'] | order(released) {
+    *[_type == 'blogPost' && slug.current == '${opts.slug}'] | order(released) {
       title,
       "releaseDate": released,
       "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180),
