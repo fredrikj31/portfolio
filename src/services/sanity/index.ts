@@ -8,6 +8,7 @@ import { getBlogPost, GetBlogPostOptions } from "./handlers/blog/getBlogPost";
 import { listBlogPostsForSitemap } from "./handlers/blog/listBlogPostsForSitemap";
 import { listTestimonials, ListTestimonialsOptions } from "./handlers/testimonial/listTestimonials";
 import { getAboutContent } from "./handlers/about/getAboutContent";
+import { listBlogPostsBySeries, ListBlogPostsBySeries } from "./handlers/blog/listBlogPostsBySeries";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -32,6 +33,10 @@ export const blog = {
 
   listBlogPostsByTag: async (options: ListBlogPostsByTagOptions) => {
     return await listBlogPostsByTag(client, options);
+  },
+
+  listBlogPostsBySeries: async (options: ListBlogPostsBySeries) => {
+    return await listBlogPostsBySeries(client, options);
   },
 
   getBlogPostSeo: async (options: GetBlogPostSeoOptions) => {
