@@ -7,10 +7,11 @@ export interface GetBlogPostSeoOptions {
 
 export const getBlogPostSeo = async (client: SanityClient, opts: GetBlogPostSeoOptions): Promise<BlogPostSeo> => {
   const post = await client.fetch(`
-    *[_type == 'blogPost' && slug.current == '${opts.slug}'] | order(released) {
+    *[_type == 'blogPost' && slug.current == '${opts.slug}'] | order(published) {
       title,
       description,
-      "releaseDate": released,
+      "publishedAt": published,
+      "modifiedAt": modified,
       tags,
     }[0]
   `);

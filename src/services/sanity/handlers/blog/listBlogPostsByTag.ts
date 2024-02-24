@@ -11,10 +11,10 @@ export const listBlogPostsByTag = async (
   opts: ListBlogPostsByTagOptions,
 ): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(`
-    *[_type == 'blogPost' && '${opts.tag}' in tags] | order(released) {
+    *[_type == 'blogPost' && '${opts.tag}' in tags] | order(published) {
       "slug": slug.current,
       title,
-      "releaseDate": released,
+      "publishedAt": published,
       tags,
       "previewText": pt::text(content),
       "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180)
