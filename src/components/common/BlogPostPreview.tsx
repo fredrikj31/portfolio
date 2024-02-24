@@ -7,15 +7,15 @@ interface BlogPostPreviewProps {
 }
 
 export const BlogPostPreview = ({ blogPostPreview }: BlogPostPreviewProps) => {
-  const releasedDate = DateTime.fromFormat(blogPostPreview.releaseDate, "yyyy-MM-dd").toFormat("LLL dd, yyyy");
+  const publishedAt = DateTime.fromFormat(blogPostPreview.publishedAt, "yyyy-MM-dd").toFormat("LLL dd, yyyy");
   return (
     <div>
       <h3 className="text-xl text-light-header dark:text-dark-header">
         <Link href={`/blog/${blogPostPreview.slug}`}>{blogPostPreview.title}</Link>
       </h3>
       <h4 className="text-base text-light-text dark:text-dark-text mb-1">
-        <ins dateTime={releasedDate} className="no-underline">
-          {releasedDate}
+        <ins dateTime={publishedAt} className="no-underline">
+          {publishedAt}
         </ins>{" "}
         ⋅ {blogPostPreview.readTimeInMinutes} min
       </h4>

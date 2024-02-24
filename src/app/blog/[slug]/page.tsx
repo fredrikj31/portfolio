@@ -33,7 +33,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: "Fredrik Johansen",
       description: blogPostSeo.description,
       title: blogPostSeo.title,
-      publishedTime: blogPostSeo.releaseDate,
+      publishedTime: blogPostSeo.publishedAt,
       tags: blogPostSeo.tags,
       url: `/blog/${params.slug}`,
     },
@@ -52,7 +52,7 @@ export default async function BlogPostPage({ params }: Props) {
       <div className="flex flex-col mb-5 mt-3">
         <h1 className="text-4xl text-light-header dark:text-dark-header">{blogPost.title}</h1>
         <div className="flex flex-row text-light-text dark:text-dark-text">
-          <p>{DateTime.fromFormat(blogPost.releaseDate, "yyyy-MM-dd").toFormat("LLLL dd, yyyy")}</p>
+          <p>{DateTime.fromFormat(blogPost.publishedAt, "yyyy-MM-dd").toFormat("LLLL dd, yyyy")}</p>
           <span className="mx-5">&bull;</span>
           <p>{blogPost.readTimeInMinutes} min</p>
         </div>

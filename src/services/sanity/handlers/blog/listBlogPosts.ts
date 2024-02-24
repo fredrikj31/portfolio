@@ -8,10 +8,10 @@ export interface ListBlogPostsOptions {
 export const listBlogPosts = async (client: SanityClient, opts: ListBlogPostsOptions): Promise<BlogPostPreview[]> => {
   const posts = await client.fetch(
     `
-      *[_type == 'blogPost'] | order(released desc) {
+      *[_type == 'blogPost'] | order(published desc) {
         "slug": slug.current,
         title,
-        "releaseDate": released,
+        "publishedAt": published,
         tags,
         "previewText": pt::text(content),
         "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180)
