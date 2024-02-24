@@ -6,6 +6,7 @@ export const listBlogPostsForSitemap = async (client: SanityClient): Promise<Blo
     *[_type == 'blogPost'] | order(published) {
       "slug": slug.current,
       "publishedAt": published,
+      "modifiedAt": modified,
     }
   `);
 

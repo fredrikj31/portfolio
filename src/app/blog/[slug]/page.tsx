@@ -34,6 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description: blogPostSeo.description,
       title: blogPostSeo.title,
       publishedTime: blogPostSeo.publishedAt,
+      modifiedTime: blogPostSeo.modifiedAt || undefined,
       tags: blogPostSeo.tags,
       url: `/blog/${params.slug}`,
     },

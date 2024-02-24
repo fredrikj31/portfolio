@@ -11,6 +11,7 @@ export const getBlogPostSeo = async (client: SanityClient, opts: GetBlogPostSeoO
       title,
       description,
       "publishedAt": published,
+      "modifiedAt": modified,
       tags,
     }[0]
   `);

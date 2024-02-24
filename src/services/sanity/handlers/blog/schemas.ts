@@ -38,6 +38,7 @@ export const BlogPostSeoSchema = z
     title: z.string(),
     description: z.string(),
     publishedAt: z.string(),
+    modifiedAt: z.string().nullable(),
     tags: z.string().array(),
   })
   .nullable();
@@ -46,5 +47,6 @@ export type BlogPostSeo = z.infer<typeof BlogPostSeoSchema>;
 export const BlogPostSitemapSchema = z.object({
   slug: z.string(),
   publishedAt: z.string(),
+  modifiedAt: z.string().nullable(),
 });
 export type BlogPostSitemap = z.infer<typeof BlogPostSitemapSchema>;
