@@ -1,14 +1,4 @@
 import { ImageResponse } from "next/og";
-import fs from "fs";
-
-function toArrayBuffer(buffer: Buffer) {
-  const arrayBuffer = new ArrayBuffer(buffer.length);
-  const view = new Uint8Array(arrayBuffer);
-  for (let i = 0; i < buffer.length; ++i) {
-    view[i] = buffer[i];
-  }
-  return arrayBuffer;
-}
 
 export async function GET(request: Request) {
   try {
@@ -20,8 +10,8 @@ export async function GET(request: Request) {
     const tags = searchParams.getAll("tag");
 
     // Getting assets from public assets folder
-    const fontData = fs.readFileSync("./public/assets/fonts/COUR.ttf");
-    const imageData = fs.readFileSync("./public/assets/images/me.jpg");
+    const fontData = await fetch(`${process.env.HOST}/assets/fonts/cour-webfont.woff`).then((res) => res.arrayBuffer());
+    const imageData = await fetch(`${process.env.HOST}/assets/images/me.jpg`).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
       (
@@ -71,7 +61,7 @@ export async function GET(request: Request) {
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt={"Picture of Fredrik Johansen"}
-                src={toArrayBuffer(imageData) as unknown as string}
+                src={imageData as unknown as string}
                 height={125}
                 width={125}
                 style={{ borderRadius: "50%" }}
@@ -91,7 +81,7 @@ export async function GET(request: Request) {
         fonts: [
           {
             name: "monospace",
-            data: toArrayBuffer(fontData),
+            data: fontData,
             style: "normal",
           },
         ],
