@@ -10,7 +10,7 @@ export async function GET(request: Request) {
     const tags = searchParams.getAll("tag");
 
     // Getting assets from public assets folder
-    const fontData = await fetch(`${process.env.HOST}/assets/fonts/cour-webfont.woff`).then((res) => res.arrayBuffer());
+    const fontData = await fetch(`${process.env.HOST}/assets/fonts/COUR.woff`).then((res) => res.arrayBuffer());
     const imageData = await fetch(`${process.env.HOST}/assets/images/me.jpg`).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
