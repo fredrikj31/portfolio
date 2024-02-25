@@ -109,7 +109,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     h4: ({ children }) => <h4 className="text-xl text-light-header dark:text-dark-header">{children}</h4>,
     h5: ({ children }) => <h5 className="text-lg text-light-header dark:text-dark-header">{children}</h5>,
     h6: ({ children }) => <h6 className="text-base text-light-header dark:text-dark-header">{children}</h6>,
-    normal: ({ children }) => <p className="text-base text-light-text dark:text-dark-text my-1">{children}</p>,
+    normal: ({ children }) => <p className="text-base text-light-text dark:text-dark-text my-2">{children}</p>,
     blockquote: ({ children }) => (
       <blockquote className="px-2 py-1 my-1 border-l-4 border-light-text dark:border-dark-text bg-light-header/10 dark:bg-dark-header/10 text-light-text dark:text-dark-text rounded">
         {children}
