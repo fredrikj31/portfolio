@@ -20,6 +20,13 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     };
   }
 
+  const openGraphImageUrlSearchParams = new URLSearchParams();
+  openGraphImageUrlSearchParams.append("title", blogPostSeo.title);
+  for (const tag of blogPostSeo.tags) {
+    openGraphImageUrlSearchParams.append("tag", tag);
+  }
+  const openGraphImageUrl = new URL(`${process.env.HOST}/api/blog/post/og?${openGraphImageUrlSearchParams.toString()}`);
+
   return {
     title: `${blogPostSeo.title} | Fredrik Johansen`,
     category: "blog",
@@ -36,6 +43,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       publishedTime: blogPostSeo.publishedAt,
       modifiedTime: blogPostSeo.modifiedAt || undefined,
       tags: blogPostSeo.tags,
+      images: openGraphImageUrl,
       url: `/blog/${params.slug}`,
     },
   };
