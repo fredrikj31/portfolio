@@ -1,7 +1,4 @@
-import { ServerRuntime } from "next";
 import { ImageResponse } from "next/og";
-
-export const runtime: ServerRuntime = "edge";
 
 export async function GET(request: Request) {
   try {
