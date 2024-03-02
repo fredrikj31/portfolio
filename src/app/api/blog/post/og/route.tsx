@@ -19,7 +19,7 @@ export async function GET(request: Request) {
           style={{
             height: "100%",
             width: "100%",
-            padding: "75px",
+            padding: "112.5px",
             display: "flex",
             alignItems: "center",
             justifyContent: "center",
@@ -34,22 +34,22 @@ export async function GET(request: Request) {
               height: "100%",
             }}
           >
-            <div style={{ display: "flex", flexDirection: "column", gap: "24px" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
-                <span style={{ fontSize: "32px" }}>Blog</span>
+            <div style={{ display: "flex", flexDirection: "column", gap: "36px" }}>
+              <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+                <span style={{ fontSize: "48px" }}>Blog</span>
                 <div style={{ border: "2px solid black" }} />
-                <span style={{ fontSize: "56px" }}>{title}</span>
+                <span style={{ fontSize: "84px" }}>{title}</span>
               </div>
-              <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "8px" }}>
+              <div style={{ display: "flex", flexDirection: "row", flexWrap: "wrap", gap: "12px" }}>
                 {tags.map((tag, i) => (
                   <span
                     key={i}
                     style={{
-                      padding: "4px 6px 4px 6px",
+                      padding: "6px 9px 6px 9px",
                       backgroundColor: "#000000",
-                      fontSize: "25px",
+                      fontSize: "37.5px",
                       color: "#FFFFFF",
-                      borderRadius: "4px",
+                      borderRadius: "6px",
                     }}
                   >
                     {tag}
@@ -57,26 +57,26 @@ export async function GET(request: Request) {
                 ))}
               </div>
             </div>
-            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "12px" }}>
+            <div style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "18px" }}>
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
                 alt={"Picture of Fredrik Johansen"}
                 src={imageData as unknown as string}
-                height={125}
-                width={125}
+                height={187.5}
+                width={187.5}
                 style={{ borderRadius: "50%" }}
               />
-              <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
-                <span style={{ fontSize: "32px" }}>Fredrik Johansen</span>
-                <span style={{ fontSize: "24px" }}>Self-Taught Software Developer</span>
+              <div style={{ display: "flex", flexDirection: "column", gap: "12px" }}>
+                <span style={{ fontSize: "48px" }}>Fredrik Johansen</span>
+                <span style={{ fontSize: "36px" }}>Self-Taught Software Developer</span>
               </div>
             </div>
           </div>
         </div>
       ),
       {
-        width: 1200,
-        height: 630,
+        width: 1800,
+        height: 945,
         // debug: true,
         fonts: [
           {
