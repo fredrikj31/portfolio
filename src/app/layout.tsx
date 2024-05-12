@@ -32,7 +32,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <head>
         {process.env.NODE_ENV === "production" && (
-          <Script async src="https://eu.umami.is/script.js" data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0" />
+          <Script
+            defer
+            src="https://analytics.eu.umami.is/script.js"
+            data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
+          ></Script>
         )}
       </head>
       <body>
