@@ -19,6 +19,7 @@ export async function GET(request: Request) {
           style={{
             height: "100%",
             width: "100%",
+            backgroundColor: "#FFFFFF",
             padding: "112.5px",
             display: "flex",
             alignItems: "center",
