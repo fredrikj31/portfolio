@@ -1,10 +1,10 @@
 import { Introduction } from "@/src/components/home/Introduction";
-import { Projects } from "@/src/components/home/Projects";
 import { LinkHeader } from "@/src/components/home/LinkHeader";
-import { blog, testimonial } from "@/src/services/sanity";
+import { blog, project, testimonial } from "@/src/services/sanity";
 import { BlogPostPreview } from "@/src/components/common/BlogPostPreview";
 import { Testimonial } from "@/src/components/common/Testimonial";
 import { Metadata } from "next";
+import { ProjectPreview } from "../components/common/ProjectPreview";
 
 export const metadata: Metadata = {
   title: `Home - Fredrik Johansen`,
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 
 export default async function Home() {
   const latestBlogPosts = await blog.listBlogPosts({ limit: 3 });
+  const projects = await project.listProjects({ limit: 3 });
   const testimonials = await testimonial.listTestimonials({ limit: 2 });
 
   return (
@@ -32,7 +33,12 @@ export default async function Home() {
         ))}
       </div>
       <div className="py-4" />
-      <Projects />
+      <LinkHeader text="Portfolio" emoji="🧰" link="/portfolio" />
+      <div className="flex flex-col gap-5">
+        {projects.map((project, index) => (
+          <ProjectPreview key={index} projectPreview={project} />
+        ))}
+      </div>
     </>
   );
 }
