@@ -1,12 +1,19 @@
 import { MetadataRoute } from "next";
-import { blog } from "@/src/services/sanity";
+import { blog, project } from "@/src/services/sanity";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const blogPosts = await blog.listBlogPostSitemap();
+  const projects = await project.listProjects({});
 
   const blogPostsSiteMap: MetadataRoute.Sitemap = blogPosts.map((blogPost) => ({
     url: `https://fredrikjohansen.dev/blog/${blogPost.slug}`,
     lastModified: blogPost.modifiedAt || blogPost.publishedAt,
+    changeFrequency: "daily",
+    priority: 0.8,
+  }));
+
+  const projectsSiteMap: MetadataRoute.Sitemap = projects.map((project) => ({
+    url: `https://fredrikjohansen.dev/portfolio/${project.slug}`,
     changeFrequency: "daily",
     priority: 0.8,
   }));
@@ -49,5 +56,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     ...blogPostsSiteMap,
+    ...projectsSiteMap,
   ];
 }
