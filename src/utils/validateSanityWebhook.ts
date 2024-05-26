@@ -2,7 +2,7 @@ import { isValidSignature } from "@sanity/webhook";
 
 interface ValidateSanityWebhookOptions {
   body: string;
-  signature: string | string[] | undefined;
+  signature: string | null;
 }
 
 export const validateSanityWebhook = async ({ body, signature }: ValidateSanityWebhookOptions): Promise<boolean> => {
@@ -14,11 +14,6 @@ export const validateSanityWebhook = async ({ body, signature }: ValidateSanityW
 
   if (!signature) {
     console.error("Signature is undefined.");
-    return false;
-  }
-
-  if (signature instanceof Array) {
-    console.error("Signature is an array.", signature);
     return false;
   }
 
