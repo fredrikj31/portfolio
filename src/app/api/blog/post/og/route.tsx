@@ -1,10 +1,11 @@
 import { ImageResponse } from "next/og";
+import { NextRequest } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest) {
+  const searchParams = request.nextUrl.searchParams;
+
   try {
     // ?title=<title>&tag=<tag>&tag=<tag>...
-    const { searchParams } = new URL(request.url);
-
     const hasTitle = searchParams.has("title");
     const title = hasTitle ? searchParams.get("title") : "Amazing blog post🔥";
     const tags = searchParams.getAll("tag");
