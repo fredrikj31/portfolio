@@ -2,8 +2,9 @@ import { SanityWebhookSchema } from "./schemas";
 import { revalidatePath } from "next/cache";
 import { SIGNATURE_HEADER_NAME } from "@sanity/webhook";
 import { validateSanityWebhook } from "@/src/utils/validateSanityWebhook";
+import { NextRequest } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: NextRequest) {
   const body = await req.json();
   const signature = req.headers.get(SIGNATURE_HEADER_NAME);
   const isSignatureValid = await validateSanityWebhook({ body: JSON.stringify(body), signature });
