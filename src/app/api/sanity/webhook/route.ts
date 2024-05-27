@@ -6,7 +6,7 @@ import { validateSanityWebhook } from "@/src/utils/validateSanityWebhook";
 export async function POST(req: Request) {
   const body = await req.json();
   const signature = req.headers.get(SIGNATURE_HEADER_NAME);
-  const isSignatureValid = await validateSanityWebhook({ body, signature });
+  const isSignatureValid = await validateSanityWebhook({ body: JSON.stringify(body), signature });
 
   if (!isSignatureValid) {
     console.error("Request signature is invalid");
@@ -19,7 +19,7 @@ export async function POST(req: Request) {
     );
   }
 
-  const parsedBody = SanityWebhookSchema.safeParse(req.body);
+  const parsedBody = SanityWebhookSchema.safeParse(body);
   if (!parsedBody.success) {
     console.error("Request body was in invalid format");
     return new Response(
