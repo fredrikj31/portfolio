@@ -2,16 +2,15 @@ import { SanityWebhookSchema } from "./schemas";
 import { revalidatePath } from "next/cache";
 import { SIGNATURE_HEADER_NAME } from "@sanity/webhook";
 import { validateSanityWebhook } from "@/src/utils/validateSanityWebhook";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function POST(req: Response) {
   const body = await req.json();
   const signature = req.headers.get(SIGNATURE_HEADER_NAME);
   const isSignatureValid = await validateSanityWebhook({ body, signature });
 
   if (!isSignatureValid) {
     console.error("Request signature is invalid");
-    return new NextResponse(
+    return new Response(
       JSON.stringify({
         code: "invalid-signature",
         message: "The signature attached to the request is invalid",
@@ -23,7 +22,7 @@ export async function POST(req: NextRequest) {
   const parsedBody = SanityWebhookSchema.safeParse(req.body);
   if (!parsedBody.success) {
     console.error("Request body was in invalid format");
-    return new NextResponse(
+    return new Response(
       JSON.stringify({
         code: "body-invalid-format",
         message: "Request body was in invalid format",
@@ -58,7 +57,7 @@ export async function POST(req: NextRequest) {
       break;
   }
 
-  return new NextResponse(
+  return new Response(
     JSON.stringify({
       code: "revalidate-success",
       message: "Revalidated paths successfully",
