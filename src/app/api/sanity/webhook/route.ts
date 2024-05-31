@@ -46,6 +46,7 @@ export async function POST(req: NextRequest) {
       break;
     case "project":
       revalidatePath("/");
+      revalidatePath("/sitemap.xml");
       revalidatePath("/portfolio");
       revalidatePath(`/portfolio/${requestBody.slug.current}`, "page");
       break;
@@ -53,6 +54,7 @@ export async function POST(req: NextRequest) {
       revalidatePath(`/blog/series/${requestBody.slug.current}`);
     case "blogPost":
       revalidatePath("/");
+      revalidatePath("/sitemap.xml");
       revalidatePath("/blog");
       revalidatePath(`/blog/${requestBody.slug.current}`, "page");
       break;
