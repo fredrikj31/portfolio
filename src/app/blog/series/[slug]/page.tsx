@@ -1,6 +1,7 @@
 import { BlogPostPreview } from "@/src/components/common/BlogPostPreview";
 import { blog } from "@/src/services/sanity";
 import { Metadata } from "next";
+import { notFound } from "next/navigation";
 
 type Props = {
   params: { slug: string };
@@ -14,6 +15,10 @@ export default async function BlogPostSeriesPage({ params }: Props) {
   const seriesBlogPosts = await blog.listBlogPostsBySeries({
     series: params.slug,
   });
+
+  if (!seriesBlogPosts) {
+    notFound();
+  }
 
   return (
     <>

@@ -6,7 +6,10 @@ export interface ListBlogPostsBySeries {
   limit?: number;
 }
 
-export const listBlogPostsBySeries = async (client: SanityClient, opts: ListBlogPostsBySeries): Promise<BlogSeries> => {
+export const listBlogPostsBySeries = async (
+  client: SanityClient,
+  opts: ListBlogPostsBySeries,
+): Promise<BlogSeries | null> => {
   const post = await client.fetch(`
     *[_type == 'blogSeries' && slug.current == '${opts.series}'] {
       title,
@@ -23,6 +26,6 @@ export const listBlogPostsBySeries = async (client: SanityClient, opts: ListBlog
     }[0]
   `);
 
-  const parsedSeries = BlogSeriesSchema.parse(post);
+  const parsedSeries = BlogSeriesSchema.nullable().parse(post);
   return parsedSeries;
 };
