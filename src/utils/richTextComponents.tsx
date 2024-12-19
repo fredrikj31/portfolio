@@ -12,7 +12,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     code: ({ value }) => {
       const highlightedCode = hljs.highlightAuto(value.code, [value.language]);
       return (
-        <pre className="text-base bg-light-header text-dark-text p-2 rounded my-1">
+        <pre className="p-2 rounded my-1">
           <code dangerouslySetInnerHTML={{ __html: highlightedCode.value }} />
         </pre>
       );
@@ -21,7 +21,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       const rows: { cells: string[] }[] = value.rows;
       const headerRow = rows[0];
       return (
-        <table className="table-auto w-full text-light-text dark:text-dark-text my-1">
+        <table className="table-auto w-full my-1">
           <thead className="bg-light-header/20 dark:bg-dark-header/20">
             <tr>
               {headerRow.cells.map((headerRowCell: string, index) => (
@@ -45,12 +45,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       const renderedKatex = katex.renderToString(value.body, {
         output: "mathml",
       });
-      return (
-        <p
-          className="text-base text-light-text dark:text-dark-text my-1 text-center"
-          dangerouslySetInnerHTML={{ __html: renderedKatex }}
-        />
-      );
+      return <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: renderedKatex }} />;
     },
     image: ({ value }) => {
       return (
@@ -67,54 +62,38 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
                 (max-width: 1200px) 50vw,
                 40vw"
           />
-          {value.alt && (
-            <figcaption className="text-base italic text-light-text dark:text-dark-text">- {value.alt}</figcaption>
-          )}
+          {value.alt && <figcaption className="italic">- {value.alt}</figcaption>}
         </figure>
       );
     },
   },
   marks: {
-    em: ({ children }) => <em className="text-base italic text-light-text dark:text-dark-text">{children}</em>,
-    strong: ({ children }) => (
-      <strong className="text-base font-bold text-light-text dark:text-dark-text">{children}</strong>
-    ),
-    highlight: ({ children }) => <mark className="text-base text-light-text bg-highlight">{children}</mark>,
-    s: ({ children }) => <s className="text-base line-through text-light-text dark:text-dark-text">{children}</s>,
-    code: ({ children }) => (
-      <code className="text-base text-dark-header px-1 font-semibold dark:text-light-header bg-light-text dark:bg-dark-text">
-        {children}
-      </code>
-    ),
+    em: ({ children }) => <em className="">{children}</em>,
+    strong: ({ children }) => <strong className="font-bold">{children}</strong>,
+    highlight: ({ children }) => <mark className="bg-highlight">{children}</mark>,
+    s: ({ children }) => <s className="line-through">{children}</s>,
+    code: ({ children }) => <code className="px-1 font-semibold">{children}</code>,
     link: ({ value, children }) => {
       return (
-        <a className="text-light-link dark:text-dark-link underline" target="_blank" href={value.href}>
+        <a className="text-blue-500 underline" target="_blank" href={value.href}>
           {children}
         </a>
       );
     },
   },
   list: {
-    bullet: ({ children }) => (
-      <ul className="list-disc list-inside text-light-text dark:text-dark-text my-1">{children}</ul>
-    ),
-    number: ({ children }) => (
-      <ol className="list-decimal list-inside text-light-text dark:text-dark-text my-1">{children}</ol>
-    ),
+    bullet: ({ children }) => <ul className="list-disc list-inside my-1">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal list-inside my-1">{children}</ol>,
   },
   block: {
-    h1: ({ children }) => <h1 className="text-4xl text-light-header dark:text-dark-header">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-3xl text-light-header dark:text-dark-header">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-2xl text-light-header dark:text-dark-header">{children}</h3>,
-    h4: ({ children }) => <h4 className="text-xl text-light-header dark:text-dark-header">{children}</h4>,
-    h5: ({ children }) => <h5 className="text-lg text-light-header dark:text-dark-header">{children}</h5>,
-    h6: ({ children }) => <h6 className="text-base text-light-header dark:text-dark-header">{children}</h6>,
-    normal: ({ children }) => <p className="text-base text-light-text dark:text-dark-text my-2">{children}</p>,
-    blockquote: ({ children }) => (
-      <blockquote className="px-2 py-1 my-1 border-l-4 border-light-text dark:border-dark-text bg-light-header/10 dark:bg-dark-header/10 text-light-text dark:text-dark-text rounded">
-        {children}
-      </blockquote>
-    ),
-    hr: () => <hr className="my-2 border text-light-text dark:text-dark-text" />,
+    h1: ({ children }) => <h1 className="text-4xl">{children}</h1>,
+    h2: ({ children }) => <h2 className="text-3xl">{children}</h2>,
+    h3: ({ children }) => <h3 className="text-2xl">{children}</h3>,
+    h4: ({ children }) => <h4 className="text-xl">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg">{children}</h5>,
+    h6: ({ children }) => <h6>{children}</h6>,
+    normal: ({ children }) => <p className="my-2">{children}</p>,
+    blockquote: ({ children }) => <blockquote className="px-2 py-1 my-1 border-l-4 rounded">{children}</blockquote>,
+    hr: () => <hr className="my-2 border" />,
   },
 };

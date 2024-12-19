@@ -1,113 +1,116 @@
 "use client";
 
+import { Button } from "@shadcn/components/ui/button";
 import Link from "next/link";
+import * as React from "react";
+import { Menu, Moon, Sun } from "lucide-react";
+import { useTheme } from "next-themes";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@shadcn/components/ui/dropdown-menu";
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/shadcn/components/ui/sheet";
 import { usePathname } from "next/navigation";
-import { useState } from "react";
 
-export const Navbar = () => {
-  const pathname = usePathname();
-  const [isDarkMode, setIsDarkMode] = useState<boolean>(false);
+const navItems = [
+  { href: "/", label: "Home" },
+  { href: "/about", label: "About" },
+  { href: "/blog", label: "Blog" },
+  { href: "/projects", label: "Projects" },
+  { href: "/resume", label: "Resume" },
+];
 
-  const darkModeToggle = () => {
-    if (document.documentElement.classList.contains("dark")) {
-      document.documentElement.classList.remove("dark");
-      setIsDarkMode(false);
-    } else {
-      document.documentElement.classList.add("dark");
-      setIsDarkMode(true);
-    }
-  };
+export function ModeToggle() {
+  const { setTheme } = useTheme();
 
   return (
-    <div className="flex flex-row justify-between items-center">
-      <div>
-        <Link
-          href={"/"}
-          style={{
-            textDecorationLine: pathname === "/" ? "underline" : "none",
-          }}
-          className="text-light-text dark:text-dark-text text-xl under"
-        >
-          home
-        </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
-        <Link
-          href={"/about"}
-          style={{
-            textDecorationLine: pathname.includes("/about") ? "underline" : "none",
-          }}
-          className="text-light-text dark:text-dark-text text-xl"
-        >
-          about
-        </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
-        <Link
-          href={"/blog"}
-          style={{
-            textDecorationLine: pathname.includes("/blog") ? "underline" : "none",
-          }}
-          className="text-light-text dark:text-dark-text text-xl"
-        >
-          blog
-        </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
-        <Link
-          href={"/resume"}
-          style={{
-            textDecorationLine: pathname === "/resume" ? "underline" : "none",
-          }}
-          className="text-light-text dark:text-dark-text text-xl"
-        >
-          resume
-        </Link>
-        <span className="md:mx-5 mx-4 text-light-text dark:text-dark-text">-</span>
-        <Link
-          href={"/portfolio"}
-          style={{
-            textDecorationLine: pathname === "/portfolio" ? "underline" : "none",
-          }}
-          className="text-light-text dark:text-dark-text text-xl"
-        >
-          portfolio
-        </Link>
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="outline" size="icon" className="size-8">
+          <Sun className="h-2 w-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-2 w-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
+        </Button>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
+  );
+}
+
+export const Navbar = () => {
+  const [isOpen, setIsOpen] = React.useState(false);
+  const pathname = usePathname();
+
+  return (
+    <header className="w-full border-b bg-background/95">
+      <div className="container flex h-14 items-center">
+        <div className="mr-4 hidden md:flex justify-between w-full">
+          <Link href="/" className="mr-6 flex items-center space-x-2">
+            <span className="hidden font-bold sm:inline-block">Fredrik Johansen</span>
+          </Link>
+          <nav className="flex items-center space-x-6 text-sm font-medium">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={`transition-colors hover:text-foreground/80 ${
+                  pathname === item.href ? "text-foreground" : "text-foreground/60"
+                }`}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <Sheet open={isOpen} onOpenChange={setIsOpen}>
+          <SheetTrigger asChild>
+            <Button
+              variant="ghost"
+              className="mr-2 px-0 text-base hover:bg-transparent focus-visible:bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 md:hidden"
+            >
+              <Menu className="h-5 w-5" />
+              <span className="sr-only">Toggle Menu</span>
+            </Button>
+          </SheetTrigger>
+          <SheetContent side="left" className="pr-0">
+            <SheetHeader>
+              <SheetTitle></SheetTitle>
+              <SheetDescription></SheetDescription>
+            </SheetHeader>
+            <nav className="flex flex-col space-y-3">
+              {navItems.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`transition-colors hover:text-foreground/80 ${
+                    pathname === item.href ? "text-foreground" : "text-foreground/60"
+                  }`}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </nav>
+          </SheetContent>
+        </Sheet>
+        <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
+          <nav className="w-full justify-end flex flex-1 md:w-auto md:flex-none">
+            <ModeToggle />
+          </nav>
+        </div>
       </div>
-      <button
-        className="p-1 rounded-full bg-dark-background dark:bg-light-background flex justify-center items-center border-none cursor-pointer"
-        onClick={darkModeToggle}
-        aria-label="Dark mode button switcher"
-      >
-        {!isDarkMode ? (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18px"
-            height="18px"
-            viewBox="0 0 25 25"
-            className="fill-light-background dark:fill-dark-background"
-          >
-            <path
-              d="M3.32031 11.6835C3.32031 16.6541 7.34975 20.6835 12.3203 20.6835C16.1075 20.6835 19.3483 18.3443 20.6768 15.032C19.6402 15.4486 18.5059 15.6834 17.3203 15.6834C12.3497 15.6834 8.32031 11.654 8.32031 6.68342C8.32031 5.50338 8.55165 4.36259 8.96453 3.32996C5.65605 4.66028 3.32031 7.89912 3.32031 11.6835Z"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        ) : (
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="18px"
-            height="18px"
-            viewBox="0 0 25 25"
-            className="dark:fill-dark-background fill-light-background dark:stroke-dark-background stroke-light-background"
-          >
-            <path
-              d="M12 3V4M12 20V21M4 12H3M6.31412 6.31412L5.5 5.5M17.6859 6.31412L18.5 5.5M6.31412 17.69L5.5 18.5001M17.6859 17.69L18.5 18.5001M21 12H20M16 12C16 14.2091 14.2091 16 12 16C9.79086 16 8 14.2091 8 12C8 9.79086 9.79086 8 12 8C14.2091 8 16 9.79086 16 12Z"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        )}
-      </button>
-    </div>
+    </header>
   );
 };
