@@ -1,3 +1,5 @@
+import { Badge } from "@/shadcn/components/ui/badge";
+import { Card, CardContent } from "@/shadcn/components/ui/card";
 import { Project } from "@/src/services/sanity/handlers/project/schemas";
 import Link from "next/link";
 
@@ -7,25 +9,26 @@ interface ProjectPreviewProps {
 
 export const ProjectPreview = ({ projectPreview }: ProjectPreviewProps) => {
   return (
-    <div>
-      <h3 className="text-xl text-light-header dark:text-dark-header">
-        <Link href={`/portfolio/${projectPreview.slug}`}>{projectPreview.title}</Link>
-      </h3>
-      <p className="text-light-text dark:text-dark-text max-h-32 line-clamp-3">{projectPreview.description}</p>
-      {projectPreview.techstack.length > 0 && (
-        <div className="flex flex-row gap-2 mt-1">
-          {projectPreview.techstack.map((techStack, index) => {
-            return (
-              <span
-                key={index}
-                className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
-              >
-                {techStack}
-              </span>
-            );
-          })}
+    <Card>
+      <CardContent className="p-6">
+        <Link href={`/portfolio/${projectPreview.slug}`}>
+          <h3 className="text-xl font-semibold mb-2">{projectPreview.title}</h3>
+        </Link>
+        <p className="text-muted-foreground mb-4">{projectPreview.description}</p>
+        <div className="flex gap-2">
+          {projectPreview.techstack.length > 0 && (
+            <div className="flex flex-row gap-1">
+              {projectPreview.techstack.map((techStack, index) => {
+                return (
+                  <Badge key={index} className="text-xs px-2 py-1 rounded-md">
+                    {techStack}
+                  </Badge>
+                );
+              })}
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      </CardContent>
+    </Card>
   );
 };

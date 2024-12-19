@@ -1,33 +1,39 @@
+import Link from "next/link";
+import { Twitter } from "./icons/Twitter";
+import { LinkedIn } from "./icons/LinkedIn";
+import { Github } from "./icons/Github";
+
 export default function Footer() {
   return (
-    <footer className="mt-auto w-full pt-5">
-      <div className="flex flex-col">
-        <div className="flex flex-row justify-evenly">
-          <a
-            className="text-light-link dark:text-dark-link underline cursor-pointer"
+    <footer className="border-t py-6 mt-auto w-full ">
+      <div className="container mx-auto px-4 flex flex-col items-center gap-4">
+        <div className="flex gap-4">
+          <Link
             target="_blank"
             href="https://twitter.com/fredrikj31"
+            className="text-muted-foreground hover:text-primary"
           >
-            twitter
-          </a>
-          <a
-            className="text-light-link dark:text-dark-link underline cursor-pointer"
+            <Twitter className="size-6" />
+            <span className="sr-only">Twitter</span>
+          </Link>
+          <Link
             target="_blank"
-            href="https://www.linkedin.com/in/fredrik-johansen"
+            href="https://linkedin.com/in/fredrik-johansen/"
+            className="text-muted-foreground hover:text-primary"
           >
-            linked-in
-          </a>
-          <a
-            className="text-light-link dark:text-dark-link underline cursor-pointer"
+            <LinkedIn className="size-6" />
+            <span className="sr-only">LinkedIn</span>
+          </Link>
+          <Link
             target="_blank"
             href="https://github.com/fredrikj31"
+            className="text-muted-foreground hover:text-primary"
           >
-            github
-          </a>
+            <Github className="size-6" />
+            <span className="sr-only">GitHub</span>
+          </Link>
         </div>
-        <div className="flex justify-center dark:text-dark-text text-light-text">
-          &copy; {`Fredrik Johansen ${new Date().getFullYear()}`}
-        </div>
+        <p className="text-sm text-muted-foreground">© 2024 Fredrik Johansen. All rights reserved.</p>
       </div>
     </footer>
   );

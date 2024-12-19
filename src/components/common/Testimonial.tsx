@@ -1,4 +1,7 @@
+import { Card, CardContent } from "@/shadcn/components/ui/card";
 import { Testimonial as TestimonialOptions } from "@/src/services/sanity/handlers/testimonial/schemas";
+import Link from "next/link";
+import { Link as LinkIcon } from "lucide-react";
 
 interface TestimonialProps {
   testimonial: TestimonialOptions;
@@ -6,23 +9,23 @@ interface TestimonialProps {
 
 export const Testimonial = ({ testimonial: { author, company, position, social, testimonial } }: TestimonialProps) => {
   return (
-    <div className="flex flex-col gap-4">
-      <blockquote className="flex flex-col">
-        <p className="text-light-text dark:text-dark-text italic">“{testimonial}”</p>
-        <footer className="flex flex-col">
-          <div className="flex flex-row">
-            <cite className="text-light-text dark:text-dark-text not-italic">{author}</cite>
+    <Card>
+      <CardContent className="p-6">
+        <blockquote className="text-lg italic">&quot;{testimonial}&quot;</blockquote>
+        <div className="mt-4 font-semibold flex flex-col">
+          <span className="flex flex-row gap-1 items-center">
+            {author}{" "}
             {social && (
-              <a href={social} target="_blank">
-                🔗
-              </a>
+              <Link href={social} target="_blank" aria-label={`Visit ${author}'s social account`}>
+                <LinkIcon className="size-4" />
+              </Link>
             )}
-          </div>
-          <span className="text-light-text dark:text-dark-text">
+          </span>
+          <span>
             {position} - {company}
           </span>
-        </footer>
-      </blockquote>
-    </div>
+        </div>
+      </CardContent>
+    </Card>
   );
 };

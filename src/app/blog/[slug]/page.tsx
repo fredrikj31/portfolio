@@ -6,6 +6,11 @@ import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { ArrowLeft, Calendar, ChevronRight, Clock, Tag } from "lucide-react";
+import { Badge } from "@/shadcn/components/ui/badge";
+import { Button } from "@/shadcn/components/ui/button";
+import { Separator } from "@/shadcn/components/ui/separator";
+import { Card, CardDescription, CardHeader, CardTitle } from "@/shadcn/components/ui/card";
 
 type Props = {
   params: { slug: string };
@@ -57,15 +62,26 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <>
-      <div className="flex flex-col mb-5 mt-3">
-        <h1 className="text-4xl text-light-header dark:text-dark-header">{blogPost.title}</h1>
-        <div className="flex flex-row text-light-text dark:text-dark-text">
-          <p>{DateTime.fromFormat(blogPost.publishedAt, "yyyy-MM-dd").toFormat("LLLL dd, yyyy")}</p>
-          <span className="mx-5">&bull;</span>
-          <p>{blogPost.readTimeInMinutes} min</p>
+    <article className="max-w-5xl mx-auto py-8 md:px-6">
+      <Link href="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Back to all posts
+      </Link>
+
+      <header className="mb-8">
+        <h1 className="text-4xl font-bold tracking-tight text-primary mb-4">{blogPost.title}</h1>
+        <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+          <div className="flex items-center">
+            <Calendar className="mr-2 h-4 w-4" />
+            {DateTime.fromFormat(blogPost.publishedAt, "yyyy-MM-dd").toFormat("LLL dd, yyyy")}
+          </div>
+          <div className="flex items-center">
+            <Clock className="mr-2 h-4 w-4" />
+            {blogPost.readTimeInMinutes} min read
+          </div>
         </div>
-      </div>
+      </header>
+
       <PortableText
         value={blogPost.content}
         components={richTextComponents}
@@ -76,34 +92,48 @@ export default async function BlogPostPage({ params }: Props) {
           });
         }}
       />
-      {/* Tags */}
-      <div className="flex flex-col gap-2 mt-5">
-        <span className="text-2xl text-light-header dark:text-dark-header">Tags:</span>
-        <div className="flex flex-row gap-3">
-          {blogPost.tags.map((tag, index: number) => (
-            <Link
-              href={`/blog/tag/${tag.toLowerCase().trim().replaceAll(" ", "-")}`}
-              key={index}
-              className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
-            >
-              {tag}
-            </Link>
-          ))}
+
+      <Separator className="my-8" />
+
+      <footer>
+        <div className="flex flex-col">
+          <div className="flex flex-wrap gap-2 mb-4 items-center">
+            <Tag className="h-4 w-4 text-muted-foreground" />
+            {blogPost.tags.map((tag) => (
+              <Badge key={tag} variant="secondary">
+                {tag}
+              </Badge>
+            ))}
+          </div>
+          <Button className="w-fit" asChild variant="outline">
+            <Link href="/blog">Read more articles</Link>
+          </Button>
         </div>
-      </div>
-      {/* Series */}
-      {blogPost.series && (
-        <div className="flex flex-col gap-2 mt-5">
-          <span className="text-2xl text-light-header dark:text-dark-header">Series:</span>
-          <Link
-            href={`/blog/series/${blogPost.series.slug}`}
-            className="flex flex-col px-2 py-1 my-1 border-l-4 border-light-text dark:border-dark-text rounded"
-          >
-            <h6 className="text-xl text-light-header dark:text-dark-header">{blogPost.series.title}</h6>
-            <p className="text-base text-light-text dark:text-dark-text italic">{blogPost.series.description}</p>
-          </Link>
-        </div>
-      )}
-    </>
+
+        <Separator className="my-8" />
+
+        {blogPost.series && (
+          <Card className="mb-8">
+            <CardHeader>
+              <CardTitle>Part of the &quot;{blogPost.series.title}&quot; series</CardTitle>
+              <CardDescription>This post is part 1 of 4 in this series.</CardDescription>
+            </CardHeader>
+            <div className="p-6 pt-0 flex justify-between items-center">
+              <Button asChild variant="outline">
+                <Link href={`/blog/series/${blogPost.series.slug}`}>View full series</Link>
+              </Button>
+              {blogPost.series && (
+                <Button asChild className="ml-auto flex items-end">
+                  <Link href={`/blog/oof`} className="inline-flex items-center">
+                    Next in series
+                    <ChevronRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+              )}
+            </div>
+          </Card>
+        )}
+      </footer>
+    </article>
   );
 }
