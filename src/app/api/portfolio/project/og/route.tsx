@@ -11,7 +11,6 @@ export async function GET(request: NextRequest) {
     const tags = searchParams.getAll("tag");
 
     // Getting assets from public assets folder
-    const fontData = await fetch(`${process.env.HOST}/assets/fonts/COUR.woff`).then((res) => res.arrayBuffer());
     const imageData = await fetch(`${process.env.HOST}/assets/images/me.jpg`).then((res) => res.arrayBuffer());
 
     return new ImageResponse(
@@ -80,13 +79,6 @@ export async function GET(request: NextRequest) {
         width: 1800,
         height: 945,
         // debug: true,
-        fonts: [
-          {
-            name: "monospace",
-            data: fontData,
-            style: "normal",
-          },
-        ],
       },
     );
   } catch (e: any) {
