@@ -5,6 +5,7 @@ import Footer from "@/src/components/Footer";
 import { Navbar } from "@/src/components/Navbar";
 import Script from "next/script";
 import { ThemeProvider } from "../providers/ThemeProvider";
+import { FestiveParticles } from "../components/FestiveParticles";
 
 export const metadata: Metadata = {
   title: "Fredrik Johansen",
@@ -41,6 +42,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         )}
       </head>
       <body className="bg-background min-h-screen flex flex-col">
+        <FestiveParticles />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />
           <PageContainer>{children}</PageContainer>
