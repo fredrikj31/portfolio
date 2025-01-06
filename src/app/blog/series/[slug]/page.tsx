@@ -9,7 +9,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export const metadata: Metadata = {
@@ -17,8 +17,9 @@ export const metadata: Metadata = {
 };
 
 export default async function BlogPostSeriesPage({ params }: Props) {
+  const slug = (await params).slug;
   const seriesBlogPosts = await blog.listBlogPostsBySeries({
-    series: params.slug,
+    series: slug,
   });
 
   if (!seriesBlogPosts) {
