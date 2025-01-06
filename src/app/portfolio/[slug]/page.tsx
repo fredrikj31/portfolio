@@ -6,11 +6,12 @@ import { richTextComponents } from "@/src/utils/richTextComponents";
 import { notFound } from "next/navigation";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const projectSeo = await project.getProjectSeo({ slug: params.slug });
+  const slug = (await params).slug;
+  const projectSeo = await project.getProjectSeo({ slug });
 
   if (!projectSeo) {
     return {
@@ -42,13 +43,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: projectSeo.title,
       tags: projectSeo.techstack,
       images: openGraphImageUrl,
-      url: `/portfolio/${params.slug}`,
+      url: `/portfolio/${slug}`,
     },
   };
 }
 
 export default async function ProjectPage({ params }: Props) {
-  const projectPost = await project.getProject({ slug: params.slug });
+  const slug = (await params).slug;
+  const projectPost = await project.getProject({ slug });
 
   if (!projectPost) {
     notFound();

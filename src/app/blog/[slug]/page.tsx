@@ -13,11 +13,12 @@ import { Separator } from "@/shadcn/components/ui/separator";
 import { Card, CardDescription, CardHeader, CardTitle } from "@/shadcn/components/ui/card";
 
 type Props = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const blogPostSeo = await blog.getBlogPostSeo({ slug: params.slug });
+  const slug = (await params).slug;
+  const blogPostSeo = await blog.getBlogPostSeo({ slug });
 
   if (!blogPostSeo) {
     return {
@@ -49,13 +50,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       modifiedTime: blogPostSeo.modifiedAt || undefined,
       tags: blogPostSeo.tags,
       images: openGraphImageUrl,
-      url: `/blog/${params.slug}`,
+      url: `/blog/${slug}`,
     },
   };
 }
 
 export default async function BlogPostPage({ params }: Props) {
-  const blogPost = await blog.getBlogPost({ slug: params.slug });
+  const slug = (await params).slug;
+  const blogPost = await blog.getBlogPost({ slug });
 
   if (!blogPost) {
     notFound();
