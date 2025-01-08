@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!blogPostSeo) {
     return {
-      title: "Blog | Fredrik Johansen",
+      title: "Blog - Fredrik Johansen",
     };
   }
 
@@ -34,7 +34,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const openGraphImageUrl = new URL(`${process.env.HOST}/api/blog/post/og?${openGraphImageUrlSearchParams.toString()}`);
 
   return {
-    title: `${blogPostSeo.title} | Fredrik Johansen`,
+    title: `${blogPostSeo.title} - Fredrik Johansen`,
     category: "blog",
     keywords: blogPostSeo.tags,
     metadataBase: new URL("https://fredrikjohansen.dev"),

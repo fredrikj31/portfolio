@@ -13,6 +13,8 @@ import { getResumeContent } from "./handlers/resume/getResumeContent";
 import { listProjects, ListProjectsOptions } from "./handlers/project/listProjects";
 import { getProjectSeo, GetProjectSeoOptions } from "./handlers/project/getProjectSeo";
 import { getProject, GetProjectOptions } from "./handlers/project/getProject";
+import { getHomeContent } from "./handlers/home/getHomeContent";
+import { getHomeSeo } from "./handlers/home/getHomeSeo";
 
 const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
@@ -59,6 +61,15 @@ export const blog = {
 export const testimonial = {
   listTestimonials: async (options: ListTestimonialsOptions) => {
     return await listTestimonials(client, options);
+  },
+};
+
+export const home = {
+  getHomeContent: async () => {
+    return await getHomeContent(client);
+  },
+  getHomeSeo: async () => {
+    return await getHomeSeo(client);
   },
 };
 

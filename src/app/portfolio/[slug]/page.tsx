@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!projectSeo) {
     return {
-      title: "Portfolio | Fredrik Johansen",
+      title: "Portfolio - Fredrik Johansen",
     };
   }
 
@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   );
 
   return {
-    title: `${projectSeo.title} | Fredrik Johansen`,
+    title: `${projectSeo.title} - Fredrik Johansen`,
     category: "project",
     keywords: projectSeo.techstack,
     metadataBase: new URL("https://fredrikjohansen.dev"),
