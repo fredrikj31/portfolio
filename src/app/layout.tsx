@@ -6,6 +6,9 @@ import { Navbar } from "@/src/components/Navbar";
 import Script from "next/script";
 import { ThemeProvider } from "../providers/ThemeProvider";
 import { FestiveParticles } from "../components/FestiveParticles";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity";
+import { DisableDraftMode } from "../components/common/DisableDraftMode";
 
 export const metadata: Metadata = {
   title: "Fredrik Johansen",
@@ -29,7 +32,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
@@ -48,6 +51,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <PageContainer>{children}</PageContainer>
           <Footer />
         </ThemeProvider>
+        {(await draftMode()).isEnabled && (
+          <>
+            <VisualEditing />
+            <DisableDraftMode />
+          </>
+        )}
       </body>
     </html>
   );
