@@ -24,7 +24,14 @@ export const client = createClient({
   token: process.env.SANITY_VIEWER_TOKEN,
   stega: {
     studioUrl: process.env.SANITY_STUDIO_URL,
-    filter: () => false, // Hides
+    filter: (props) => {
+      const { sourcePath } = props;
+      // Do not generate stega source map for portable text
+      if (sourcePath[0] === "content") {
+        return false;
+      }
+      return props.filterDefault(props);
+    },
   },
 });
 
