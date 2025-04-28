@@ -15,6 +15,7 @@ export const listProjects = async (
         "slug": slug.current,
         title,
         description,
+        "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180),
         techstack,
       }${opts.limit ? `[0..${opts.limit - 1}]` : ""}
     `,
