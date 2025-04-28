@@ -11,6 +11,7 @@ export const getProject = async (client: SanityClient, opts: GetProjectOptions):
       "slug": slug.current,
       title,
       description,
+      "readTimeInMinutes": round(length(pt::text(content)) / 5 / 180),
       techstack,
       content,
     }[0]

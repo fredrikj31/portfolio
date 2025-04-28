@@ -4,6 +4,8 @@ import { project } from "@/src/services/sanity";
 import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
 import { notFound } from "next/navigation";
+import { ArrowLeft, Clock, Layers } from "lucide-react";
+import Link from "next/link";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -57,10 +59,41 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   return (
-    <>
-      <div className="flex flex-col mb-5 mt-3">
-        <h1 className="text-4xl text-light-header dark:text-dark-header">{projectPost.title}</h1>
-      </div>
+    <article className="max-w-5xl mx-auto py-8 md:px-6">
+      <Link
+        href="/portfolio"
+        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8"
+      >
+        <ArrowLeft className="mr-2 h-4 w-4" />
+        Back to Portfolio
+      </Link>
+
+      <header className="mb-8 flex flex-col gap-2">
+        <h1 className="text-4xl font-bold tracking-tight text-primary">{projectPost.title}</h1>
+        {projectPost.readTimeInMinutes && (
+          <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center">
+              <Clock className="mr-2 h-4 w-4" />
+              {projectPost.readTimeInMinutes} min read
+            </div>
+          </div>
+        )}
+        {projectPost.techstack.length > 0 && (
+          <div className="flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
+            <div className="flex items-center">
+              <Layers className="mr-2 h-4 w-4" />
+              <span>Tech Stack:</span>
+            </div>
+            <div className="flex flex-row gap-1">
+              {projectPost.techstack.map((tech, index: number) => (
+                <span key={index} className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">
+                  {tech}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
+      </header>
       <PortableText
         value={projectPost.content}
         components={richTextComponents}
@@ -71,20 +104,6 @@ export default async function ProjectPage({ params }: Props) {
           });
         }}
       />
-      {/* Techstack */}
-      <div className="flex flex-col gap-2 mt-5">
-        <span className="text-2xl text-light-header dark:text-dark-header">Techstack:</span>
-        <div className="flex flex-row gap-3">
-          {projectPost.techstack.map((tech, index: number) => (
-            <span
-              key={index}
-              className="text-xs px-2 py-1 bg-dark-background dark:bg-light-background dark:text-dark-background rounded-md text-light-background"
-            >
-              {tech}
-            </span>
-          ))}
-        </div>
-      </div>
-    </>
+    </article>
   );
 }

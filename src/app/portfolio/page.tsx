@@ -10,15 +10,16 @@ export default async function PortfolioPage() {
   const projects = await project.listProjects({});
 
   return (
-    <>
-      <div className="mt-10">
-        <h1 className="text-4xl text-light-header dark:text-dark-header mb-3">Portfolio🧰</h1>
-        <div className="flex flex-col gap-5">
-          {projects.map((project, index) => (
-            <ProjectPreview key={index} projectPreview={project} />
-          ))}
-        </div>
+    <div className="container mx-auto px-4 py-8">
+      <h1 className="text-4xl font-bold mb-4">Portfolio</h1>
+      <p className="text-xl text-muted-foreground mb-8">
+        Projects focusing on continuous learning, explorations and creativity.
+      </p>
+      <div className="grid gap-6 md:grid-cols-2">
+        {projects.map((project, index) => (
+          <ProjectPreview key={index} projectPreview={project} />
+        ))}
       </div>
-    </>
+    </div>
   );
 }
