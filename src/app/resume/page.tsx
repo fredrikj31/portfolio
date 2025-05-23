@@ -1,4 +1,4 @@
-import { resume } from "@/src/services/sanity";
+import { resume, sanityImageUrl } from "@/src/services/sanity";
 import { Metadata } from "next";
 import { Card } from "@/shadcn/components/ui/card";
 import { Mail, MapPin, Phone } from "lucide-react";
@@ -9,6 +9,9 @@ import "./index.css";
 import { PrintButton } from "./components/PrintButton";
 import Image from "next/image";
 import me from "../me.jpg";
+import { getImageDimensions } from "@sanity/asset-utils";
+import { PortableText } from "next-sanity";
+import { richTextComponents } from "@/src/utils/richTextComponents";
 
 export const metadata: Metadata = {
   title: `Resume - Fredrik Johansen`,
@@ -30,60 +33,46 @@ export default async function ResumePage() {
         <header className="mb-6">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-              <h1 className="text-3xl font-bold">FREDRIK JOHANSEN</h1>
-              <h2 className="text-xl text-muted-foreground">Self-taught Software Developer</h2>
+              <h1 className="text-3xl font-bold">{resumeContent.title}</h1>
+              <h2 className="text-xl text-muted-foreground">{resumeContent.subTitle}</h2>
             </div>
-            <Image className="rounded-full" src={me} width={75} height={75} alt="Picture of Fredrik Johansen" />
+            <Image
+              className="rounded-full"
+              src={sanityImageUrl(resumeContent.image.asset._ref).url()}
+              alt={resumeContent.image.alt}
+              width={resumeContent.image.width}
+              height={resumeContent.image.height}
+            />
           </div>
 
           <div className="grid grid-cols-2 gap-2 mt-4">
-            <div className="flex items-center gap-2">
-              <Phone className="h-4 w-4" />
-              <a target="_blank" href="tel:+4542944331">
-                +45 42 94 43 31
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="h-4 w-4" />
-              <a target="_blank" href="mailto:fredrik1206@gmail.com">
-                fredrik1206@gmail.com
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <Github className="h-4 w-4" />
-              <a target="_blank" href="https://github.com/fredrikj31">
-                github.com/fredrikj31
-              </a>
-            </div>
-            <div className="flex items-center gap-2">
-              <MapPin className="h-4 w-4" />
-              <span>Copenhagen, Denmark</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <LinkedIn className="h-4 w-4" />
-              <a target="_blank" href="https://linkedin.com/in/fredrik-johansen">
-                linkedin.com/in/fredrik-johansen
-              </a>
-              <span></span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Twitter className="h-4 w-4" />
-              <a target="_blank" href="https://twitter.com/fredrikj31">
-                @fredrikj31
-              </a>
-            </div>
+            {resumeContent.links.map(({ text, link }, index) => (
+              <div className="flex items-center gap-2" key={`link-${index}`}>
+                <Phone className="h-4 w-4" />
+                {link ? (
+                  <a target="_blank" href={link}>
+                    {text}
+                  </a>
+                ) : (
+                  <span>{text}</span>
+                )}
+              </div>
+            ))}
           </div>
         </header>
 
         {/* Introduction */}
         <section className="mb-6">
-          <p>
-            Hi, I&apos;m Fredrik Johansen. I am a largely self-taught software developer. I like to develop different
-            digital products that other people would benefit from. I have been developing software since I was 13 years
-            old. Therefore I have a broad knowledge of the field. Software development, as always, brings many problems
-            that need to be solved, but this has not stopped me from achieving the goal that I have set for myself. I am
-            a hard-working person who always strives to complete the given task as well as possible.
-          </p>
+          <PortableText
+            value={resumeContent.description}
+            components={richTextComponents}
+            onMissingComponent={(message, options) => {
+              console.error(message, {
+                type: options.type,
+                nodeType: options.nodeType,
+              });
+            }}
+          />
         </section>
 
         {/* Two Column Layout for the rest */}
