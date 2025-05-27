@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   if (!projectSeo) {
     return {
-      title: "Portfolio - Fredrik Johansen",
+      title: "Projects - Fredrik Johansen",
     };
   }
 
@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     openGraphImageUrlSearchParams.append("tag", tag);
   }
   const openGraphImageUrl = new URL(
-    `${process.env.HOST}/api/portfolio/project/og?${openGraphImageUrlSearchParams.toString()}`,
+    `${process.env.HOST}/api/projects/project/og?${openGraphImageUrlSearchParams.toString()}`,
   );
 
   return {
@@ -45,7 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: projectSeo.title,
       tags: projectSeo.techstack,
       images: openGraphImageUrl,
-      url: `/portfolio/${slug}`,
+      url: `/projects/${slug}`,
     },
   };
 }
@@ -60,12 +60,9 @@ export default async function ProjectPage({ params }: Props) {
 
   return (
     <article className="max-w-5xl mx-auto py-8 md:px-6">
-      <Link
-        href="/portfolio"
-        className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8"
-      >
+      <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" />
-        Back to Portfolio
+        Back to Projects
       </Link>
 
       <header className="mb-8 flex flex-col gap-2">

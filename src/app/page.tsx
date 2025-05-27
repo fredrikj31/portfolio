@@ -87,7 +87,7 @@ export default async function Home() {
               ))}
             </div>
             <Button variant={"outline"} asChild>
-              <Link href={"/portfolio"}>View Projects</Link>
+              <Link href={"/projects"}>View Projects</Link>
             </Button>
           </div>
         </section>

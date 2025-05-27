@@ -13,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const projectsSiteMap: MetadataRoute.Sitemap = projects.map((project) => ({
-    url: `https://fredrikjohansen.dev/portfolio/${project.slug}`,
+    url: `https://fredrikjohansen.dev/projects/${project.slug}`,
     changeFrequency: "daily",
     priority: 0.8,
   }));
@@ -32,7 +32,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.5,
     },
     {
-      url: "https://fredrikjohansen.dev/portfolio",
+      url: "https://fredrikjohansen.dev/projects",
       lastModified: new Date(),
       changeFrequency: "daily",
       priority: 0.5,
