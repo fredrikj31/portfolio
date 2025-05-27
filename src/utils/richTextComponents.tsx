@@ -29,7 +29,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
               ))}
             </tr>
           </thead>
-          <tbody className="[&>*:nth-child(even)]:bg-light-header/10 [&>*:nth-child(even)]:dark:bg-dark-header/10">
+          <tbody className="[&>*:nth-child(even)]:bg-light-header/10 dark:[&>*:nth-child(even)]:bg-dark-header/10">
             {rows.slice(1).map((row, index) => (
               <tr key={index}>
                 {row.cells.map((rowCell, index) => (
