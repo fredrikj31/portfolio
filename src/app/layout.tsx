@@ -24,7 +24,7 @@ export const metadata: Metadata = {
     "programming",
     "self-taught",
     "blog",
-    "portfolio",
+    "projects",
   ],
   robots: {
     index: true,

@@ -13,7 +13,7 @@ export const ProjectPreview = ({ projectPreview }: ProjectPreviewProps) => {
     <Card>
       <CardHeader>
         <CardTitle>
-          <Link href={`/portfolio/${projectPreview.slug}`} className="hover:underline">
+          <Link href={`/projects/${projectPreview.slug}`} className="hover:underline">
             {projectPreview.title}
           </Link>
         </CardTitle>
@@ -35,7 +35,7 @@ export const ProjectPreview = ({ projectPreview }: ProjectPreviewProps) => {
           <div className="text-sm text-muted-foreground">{projectPreview.readTimeInMinutes} min read</div>
         )}
         <Button variant="ghost" size="sm" asChild>
-          <Link href={`/portfolio/${projectPreview.slug}`}>
+          <Link href={`/projects/${projectPreview.slug}`}>
             Read more <ChevronRight className="ml-2 h-4 w-4" />
           </Link>
         </Button>
