@@ -29,6 +29,8 @@ export const ResumeContentSchema = z.object({
       name: z.string(),
       role: z.string(),
       description: z.any(),
+      fromDate: z.string().date(),
+      toDate: z.string().date().optional(),
     })
     .array(),
   projects: z
