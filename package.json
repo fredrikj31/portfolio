@@ -17,7 +17,6 @@
     "@radix-ui/react-slot": "^1.2.3",
     "@sanity/asset-utils": "^2.2.1",
     "@sanity/image-url": "^1.1.0",
-    "@sanity/webhook": "^4.0.4",
     "@tsparticles/basic": "^3.8.1",
     "@tsparticles/engine": "^3.8.1",
     "@tsparticles/plugin-emitters": "^3.8.1",
