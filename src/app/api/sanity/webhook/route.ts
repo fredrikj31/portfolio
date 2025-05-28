@@ -1,15 +1,13 @@
 import { SanityWebhookSchema } from "./schemas";
 import { revalidatePath } from "next/cache";
-import { SIGNATURE_HEADER_NAME } from "@sanity/webhook";
-import { validateSanityWebhook } from "@/src/utils/validateSanityWebhook";
 import { NextRequest } from "next/server";
+import { parseBody } from "next-sanity/webhook";
 
 export async function POST(req: NextRequest) {
-  const body = await req.json();
-  const signature = req.headers.get(SIGNATURE_HEADER_NAME);
-  const isSignatureValid = await validateSanityWebhook({ body: JSON.stringify(body), signature });
+  const sanityWebhookSecret = process.env.SANITY_WEBHOOK_SECRET;
+  const { isValidSignature, body } = await parseBody<{ _type: string }>(req, sanityWebhookSecret);
 
-  if (!isSignatureValid) {
+  if (!isValidSignature) {
     console.error("Request signature is invalid");
     return new Response(
       JSON.stringify({
@@ -17,6 +15,16 @@ export async function POST(req: NextRequest) {
         message: "The signature attached to the request is invalid",
       }),
       { status: 401 },
+    );
+  }
+
+  if (!body?._type) {
+    return new Response(
+      JSON.stringify({
+        code: "body-missing-type",
+        message: "Request body was missing type",
+      }),
+      { status: 400 },
     );
   }
 
