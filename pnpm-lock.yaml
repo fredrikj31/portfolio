@@ -29,9 +29,6 @@ importers:
       '@sanity/image-url':
         specifier: ^1.1.0
         version: 1.1.0
-      '@sanity/webhook':
-        specifier: ^4.0.4
-        version: 4.0.4
       '@tsparticles/basic':
         specifier: ^3.8.1
         version: 3.8.1
@@ -1436,10 +1433,6 @@ packages:
         optional: true
       svelte:
         optional: true
-
-  '@sanity/webhook@4.0.4':
-    resolution: {integrity: sha512-c8LmzR5Wx93zJ10ohhp0XlmPrTNSFyvPcLbNY/sN45Wj5VOngz4FbBMbX9j64sSQLt+676U6OhiVfjs1yw3YCw==}
-    engines: {node: '>=20.0.0'}
 
   '@shuding/opentype.js@1.4.0-beta.0':
     resolution: {integrity: sha512-3NgmNyH3l/Hv6EvsWJbsvpcpUba6R8IREQ83nH83cyakCw7uM1arZKNfHwv1Wz6jgqrF/j4x5ELvR6PnK9nTcA==}
@@ -6162,8 +6155,6 @@ snapshots:
       - '@sanity/types'
       - debug
       - typescript
-
-  '@sanity/webhook@4.0.4': {}
 
   '@shuding/opentype.js@1.4.0-beta.0':
     dependencies:
