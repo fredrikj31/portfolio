@@ -8,6 +8,7 @@ import { PortableText } from "next-sanity";
 import { richTextComponents } from "@/src/utils/richTextComponents";
 import { LinkIcon } from "./components/LinkIcon";
 import { DateTime } from "luxon";
+import { ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
   title: `Resume - Fredrik Johansen`,
@@ -95,9 +96,23 @@ export default async function ResumePage() {
                 {resumeContent.workExperiences.map((workExperience, index) => (
                   <div key={`work-experience-${index}`} className="flex flex-col gap-2">
                     <div className="flex justify-between items-start">
-                      <h3 className="font-semibold">
-                        {workExperience.role} - {workExperience.name}
-                      </h3>
+                      <div className="flex flex-row gap-1 font-semibold">
+                        <h3>{workExperience.role}</h3>
+                        <span> - </span>
+                        {workExperience.link ? (
+                          <a
+                            className="flex flex-row gap-1 items-center hover:text-neutral-700 hover:dark:text-neutral-300"
+                            target="_blank"
+                            rel="noreferrer"
+                            href={workExperience.link}
+                          >
+                            <span>{workExperience.name}</span>
+                            <ExternalLink className="size-4" />
+                          </a>
+                        ) : (
+                          <h3>{workExperience.name}</h3>
+                        )}
+                      </div>
                       <span className="text-sm text-muted-foreground">
                         {DateTime.fromFormat(workExperience.fromDate, "yyyy-LL-dd").toFormat("LLL yyyy")} -{" "}
                         {workExperience.toDate
