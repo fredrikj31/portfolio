@@ -27,6 +27,7 @@ export const ResumeContentSchema = z.object({
   workExperiences: z
     .object({
       name: z.string(),
+      link: z.string().optional(),
       role: z.string(),
       description: z.any(),
       fromDate: z.string().date(),
