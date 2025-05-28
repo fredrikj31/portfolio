@@ -98,7 +98,12 @@ export default async function ResumePage() {
                       <h3 className="font-semibold">
                         {workExperience.role} - {workExperience.name}
                       </h3>
-                      <span className="text-sm text-muted-foreground">Startup | 2021 - Present</span>
+                      <span className="text-sm text-muted-foreground">
+                        {DateTime.fromFormat(workExperience.fromDate, "yyyy-LL-dd").toFormat("LLL yyyy")} -{" "}
+                        {workExperience.toDate
+                          ? DateTime.fromFormat(workExperience.toDate, "yyyy-LL-dd").toFormat("LLL yyyy")
+                          : "Present"}
+                      </span>
                     </div>
                     <PortableText
                       value={workExperience.description}
