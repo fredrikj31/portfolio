@@ -62,7 +62,7 @@ export const FestiveParticles = () => {
   }, [particleToShow]);
 
   if (init && particleToShow !== null) {
-    return <Particles id="tsparticles" options={{ preset: particleToShow }} />;
+    return <Particles className="-z-10" id="tsparticles" options={{ preset: particleToShow }} />;
   }
 
   return null;
