@@ -13,8 +13,8 @@ export const BlogPostPreview = ({ blogPostPreview }: BlogPostPreviewProps) => {
   const publishedAt = DateTime.fromFormat(blogPostPreview.publishedAt, "yyyy-MM-dd").toFormat("LLL dd, yyyy");
   return (
     <Card key={blogPostPreview.slug}>
-      <CardContent className="p-4">
-        <h3 className="font-semibold mb-2">{blogPostPreview.title}</h3>
+      <CardContent className="p-4 flex flex-col gap-2">
+        <h3 className="font-semibold">{blogPostPreview.title}</h3>
         <p className="text-sm text-muted-foreground">
           <ins dateTime={publishedAt} className="no-underline">
             {publishedAt}
@@ -25,14 +25,14 @@ export const BlogPostPreview = ({ blogPostPreview }: BlogPostPreviewProps) => {
           <div className="flex flex-row gap-1">
             {blogPostPreview.tags.map((tag) => (
               <Link key={tag} href={`/blog/tag/${tag.toLowerCase().trim().replaceAll(" ", "-")}`}>
-                <Badge>{tag}</Badge>
+                <Badge className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">{tag}</Badge>
               </Link>
             ))}
           </div>
         )}
         <Link
           href={`/blog/${blogPostPreview.slug}`}
-          className="flex flex-row gap-1 text-primary hover:underline text-sm mt-2 items-end"
+          className="flex flex-row gap-1 text-primary hover:underline text-sm items-end"
         >
           Read more <ArrowRight className="size-4" />
         </Link>
