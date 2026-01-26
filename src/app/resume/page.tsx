@@ -34,15 +34,15 @@ export default async function ResumePage() {
 
       <Card
         className={
-          "p-8 print:p-6 print:shadow-none print:border-none max-w-5xl print:max-w-[210mm] mx-auto print:block"
+          "p-8 print:p-6 print:shadow-none print:border-none max-w-5xl print:max-w-[210mm] mx-auto print:block print:bg-white print:text-neutral-950"
         }
       >
         {/* Header Section */}
         <header className="mb-6">
           <div className="flex flex-row justify-between">
             <div className="flex flex-col">
-              <h1 className="text-3xl font-bold">{resumeContent.title}</h1>
-              <h2 className="text-xl text-muted-foreground">{resumeContent.subTitle}</h2>
+              <h1 className="text-3xl font-bold print:text-neutral-900">{resumeContent.title}</h1>
+              <h2 className="text-xl text-muted-foreground print:text-neutral-700">{resumeContent.subTitle}</h2>
             </div>
             <div className="size-fit">
               <Image
@@ -58,13 +58,13 @@ export default async function ResumePage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mt-4">
             {resumeContent.links.map(({ icon, text, link }, index) => (
               <div className="flex items-center gap-2" key={`link-${index}`}>
-                <LinkIcon icon={icon} className="h-4 w-4" />
+                <LinkIcon icon={icon} className="h-4 w-4 print:text-neutral-600" />
                 {link ? (
-                  <a target="_blank" href={link}>
+                  <a className="print:text-neutral-600" target="_blank" href={link}>
                     {text}
                   </a>
                 ) : (
-                  <span>{text}</span>
+                  <span className="print:text-neutral-600">{text}</span>
                 )}
               </div>
             ))}
@@ -216,7 +216,7 @@ export default async function ResumePage() {
 
               {Array.from(groupedSkills).map(([group, skills], index) => (
                 <div key={`skills-group-${index}`} className="flex flex-col">
-                  <h3 className="font-semibold mt-3 mb-2">{group}</h3>
+                  <h3 className="font-bold mt-3 mb-2">{group}</h3>
                   <ul className="grid grid-cols-2 gap-2">
                     {skills.map((skill, index) => (
                       <li key={`skill-${index}`}>{skill}</li>
