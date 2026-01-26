@@ -61,7 +61,7 @@ export const Navbar = () => {
   const pathname = usePathname();
 
   return (
-    <header className="w-full border-b bg-background/95 print:hidden">
+    <header className="w-full border-b bg-background/95 print:hidden px-4">
       <div className="max-w-7xl mx-auto flex h-14 items-center">
         <div className="mr-4 hidden md:flex justify-between w-full">
           <Link href="/" className="mr-6 flex items-center space-x-2">
