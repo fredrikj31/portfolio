@@ -95,7 +95,7 @@ export default async function ResumePage() {
               <div className="flex flex-col gap-4">
                 {resumeContent.workExperiences.map((workExperience, index) => (
                   <div key={`work-experience-${index}`} className="flex flex-col gap-2">
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between flex-col md:flex-row items-start">
                       <div className="flex flex-row gap-1 font-semibold">
                         <h3>{workExperience.role}</h3>
                         <span> - </span>
@@ -142,7 +142,7 @@ export default async function ResumePage() {
               <div className="flex flex-col gap-2">
                 {resumeContent.projects.map((project, index) => (
                   <div key={`project-${index}`} className="flex flex-col gap-1">
-                    <div className="flex justify-between items-start">
+                    <div className="flex justify-between flex-col md:flex-row items-start">
                       <h3 className="font-semibold">{project.name}</h3>
                       <span className="text-sm text-muted-foreground">{project.type}</span>
                     </div>
