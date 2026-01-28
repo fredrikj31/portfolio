@@ -64,7 +64,7 @@ export default async function BlogPostPage({ params }: Props) {
   }
 
   return (
-    <article className="max-w-5xl mx-auto py-8 md:px-6">
+    <article className="max-w-5xl mx-auto py-8">
       <Link href="/blog" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to all posts

@@ -1,5 +1,5 @@
 import { createClient } from "next-sanity";
-import imageUrlBuilder from "@sanity/image-url";
+import { createImageUrlBuilder } from "@sanity/image-url";
 import { listBlogPosts, ListBlogPostsOptions } from "./handlers/blog/listBlogPosts";
 import { listBlogPostsByTag, ListBlogPostsByTagOptions } from "./handlers/blog/listBlogPostsByTag";
 import { getBlogPostSeo, GetBlogPostSeoOptions } from "./handlers/blog/getBlogPostSeo";
@@ -35,7 +35,7 @@ export const client = createClient({
   },
 });
 
-const builder = imageUrlBuilder(client);
+const builder = createImageUrlBuilder(client);
 
 // Then we like to make a simple function like this that gives the
 // builder an image and returns the builder for you to specify additional
