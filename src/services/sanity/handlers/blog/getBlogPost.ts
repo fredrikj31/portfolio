@@ -1,4 +1,4 @@
-import { SanityClient, stegaClean } from "next-sanity";
+import { SanityClient } from "next-sanity";
 import { BlogPost, BlogPostSchema } from "./schemas";
 import { draftMode } from "next/headers";
 
