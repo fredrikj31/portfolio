@@ -49,7 +49,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     },
     image: ({ value }) => {
       return (
-        <figure className="flex flex-col items-center w-full my-1">
+        <figure className="my-10 flex flex-col items-center w-full">
           <Image
             src={sanityImageUrl(value).url()}
             alt={value.alt}
@@ -62,7 +62,7 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
                 (max-width: 1200px) 50vw,
                 40vw"
           />
-          {value.alt && <figcaption className="italic">- {value.alt}</figcaption>}
+          {value.alt && <figcaption className="mt-3 text-center text-sm text-muted-foreground">{value.alt}</figcaption>}
         </figure>
       );
     },
@@ -86,14 +86,16 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     number: ({ children }) => <ol className="list-decimal list-inside my-1">{children}</ol>,
   },
   block: {
-    h1: ({ children }) => <h1 className="text-4xl">{children}</h1>,
-    h2: ({ children }) => <h2 className="text-3xl">{children}</h2>,
-    h3: ({ children }) => <h3 className="text-2xl">{children}</h3>,
-    h4: ({ children }) => <h4 className="text-xl">{children}</h4>,
-    h5: ({ children }) => <h5 className="text-lg">{children}</h5>,
+    h1: ({ children }) => (
+      <h1 className="text-4xl mb-5 mt-10 font-bold leading-tight tracking-tight text-balance">{children}</h1>
+    ),
+    h2: ({ children }) => <h2 className="mb-4 mt-8 text-3xl font-bold tracking-tight">{children}</h2>,
+    h3: ({ children }) => <h3 className="mb-3 mt-6 text-2xl font-semibold tracking-tight">{children}</h3>,
+    h4: ({ children }) => <h4 className="mb-2 mt-4 text-xl font-semibold tracking-tight">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg mb-1 mt-2 font-semibold tracking-tight">{children}</h5>,
     h6: ({ children }) => <h6>{children}</h6>,
-    normal: ({ children }) => <p className="my-2">{children}</p>,
-    blockquote: ({ children }) => <blockquote className="px-2 py-1 my-1 border-l-4 rounded">{children}</blockquote>,
+    normal: ({ children }) => <p className="mb-6 leading-relaxed">{children}</p>,
+    blockquote: ({ children }) => <blockquote className="px-2 py-1 my-8 border-l-4 rounded">{children}</blockquote>,
     hr: () => <hr className="my-2 border" />,
   },
 };
