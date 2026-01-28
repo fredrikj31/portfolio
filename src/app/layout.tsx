@@ -7,7 +7,7 @@ import Script from "next/script";
 import { ThemeProvider } from "../providers/ThemeProvider";
 import { FestiveParticles } from "../components/FestiveParticles";
 import { draftMode } from "next/headers";
-import { VisualEditing } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { DisableDraftMode } from "../components/common/DisableDraftMode";
 
 export const metadata: Metadata = {
