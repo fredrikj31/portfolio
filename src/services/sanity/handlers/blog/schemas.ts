@@ -4,7 +4,9 @@ export const BlogSeriesInformationSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
+  posts: z.object({ slug: z.string() }).array(),
 });
+export type BlogSeriesInformation = z.infer<typeof BlogSeriesInformationSchema>;
 
 export const BlogPostSchema = z
   .object({
