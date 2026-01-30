@@ -96,6 +96,13 @@ export default async function BlogPostPage({ params }: Props) {
 
       <Separator className="my-8" />
 
+      {blogPost.series && (
+        <>
+          <BlogSeriesCard currentSlug={slug} series={blogPost.series} />
+          <Separator className="my-8" />
+        </>
+      )}
+
       <footer>
         <div className="flex flex-col">
           <div className="flex flex-wrap gap-2 mb-4 items-center">
@@ -110,10 +117,6 @@ export default async function BlogPostPage({ params }: Props) {
             <Link href="/blog">Read more articles</Link>
           </Button>
         </div>
-
-        <Separator className="my-8" />
-
-        {blogPost.series && <BlogSeriesCard currentSlug={slug} series={blogPost.series} />}
       </footer>
     </article>
   );
