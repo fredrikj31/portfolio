@@ -41,7 +41,7 @@ export default function Footer() {
             <span className="sr-only">GitHub</span>
           </Link>
         </div>
-        <p className="text-sm text-muted-foreground">© {year} Fredrik Johansen. All rights reserved.</p>
+        <span className="text-sm text-muted-foreground">© {year} Fredrik Johansen. All rights reserved.</span>
       </div>
     </footer>
   );
