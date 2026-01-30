@@ -1,9 +1,17 @@
+"use client";
+
 import Link from "next/link";
 import { Twitter } from "./icons/Twitter";
 import { LinkedIn } from "./icons/LinkedIn";
 import { Github } from "./icons/Github";
+import { useEffect, useState } from "react";
 
 export default function Footer() {
+  const [year, setYear] = useState<number>(new Date().getFullYear());
+  useEffect(() => {
+    setYear(new Date().getFullYear());
+  }, []);
+
   return (
     <footer className="border-t py-6 mt-auto w-full print:hidden">
       <div className="container mx-auto px-4 flex flex-col items-center gap-4">
@@ -33,7 +41,7 @@ export default function Footer() {
             <span className="sr-only">GitHub</span>
           </Link>
         </div>
-        <p className="text-sm text-muted-foreground">© 2024 Fredrik Johansen. All rights reserved.</p>
+        <p className="text-sm text-muted-foreground">© {year} Fredrik Johansen. All rights reserved.</p>
       </div>
     </footer>
   );
