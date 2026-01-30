@@ -1,5 +1,4 @@
 import { DateTime } from "luxon";
-import React from "react";
 import { Metadata } from "next";
 import { blog } from "@/src/services/sanity";
 import { PortableText } from "@portabletext/react";
@@ -10,7 +9,7 @@ import { ArrowLeft, Calendar, ChevronRight, Clock, Tag } from "lucide-react";
 import { Badge } from "@/shadcn/components/ui/badge";
 import { Button } from "@/shadcn/components/ui/button";
 import { Separator } from "@/shadcn/components/ui/separator";
-import { Card, CardDescription, CardHeader, CardTitle } from "@/shadcn/components/ui/card";
+import { BlogSeriesCard } from "./components/BlogSeriesCard";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -114,27 +113,7 @@ export default async function BlogPostPage({ params }: Props) {
 
         <Separator className="my-8" />
 
-        {blogPost.series && (
-          <Card className="mb-8">
-            <CardHeader>
-              <CardTitle>Part of the &quot;{blogPost.series.title}&quot; series</CardTitle>
-              <CardDescription>This post is part 1 of 4 in this series.</CardDescription>
-            </CardHeader>
-            <div className="p-6 pt-0 flex justify-between items-center">
-              <Button asChild variant="outline">
-                <Link href={`/blog/series/${blogPost.series.slug}`}>View full series</Link>
-              </Button>
-              {blogPost.series && (
-                <Button asChild className="ml-auto flex items-end">
-                  <Link href={`/blog/oof`} className="inline-flex items-center">
-                    Next in series
-                    <ChevronRight className="h-4 w-4" />
-                  </Link>
-                </Button>
-              )}
-            </div>
-          </Card>
-        )}
+        {blogPost.series && <BlogSeriesCard currentSlug={slug} series={blogPost.series} />}
       </footer>
     </article>
   );
