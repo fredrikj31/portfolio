@@ -4,6 +4,7 @@ export const BlogSeriesInformationSchema = z.object({
   title: z.string(),
   description: z.string(),
   slug: z.string(),
+  posts: z.object({ slug: z.string() }).array(),
 });
 
 export const BlogPostSchema = z

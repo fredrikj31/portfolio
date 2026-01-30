@@ -18,7 +18,10 @@ export const getBlogPost = async (client: SanityClient, opts: GetBlogPostOptions
       "series": *[_type=='blogSeries' && references(^._id)]{ 
         title,
         description,
-        "slug": slug.current
+        "slug": slug.current,
+        "posts": posts[]-> {
+          "slug": slug.current,
+        }
       }[0]
     }[0]`,
     {},
