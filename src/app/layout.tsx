@@ -9,6 +9,11 @@ import { FestiveParticles } from "../components/FestiveParticles";
 import { draftMode } from "next/headers";
 import { VisualEditing } from "next-sanity/visual-editing";
 import { DisableDraftMode } from "../components/common/DisableDraftMode";
+import { Geist_Mono } from "next/font/google";
+
+const geistMono = Geist_Mono({
+  subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
   title: "Fredrik Johansen",
@@ -34,17 +39,13 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={geistMono.className}>
       <head>
         {process.env.NODE_ENV === "production" && (
-          <Script
-            defer
-            src="https://cloud.umami.is/script.js"
-            data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0"
-          ></Script>
+          <Script defer src="https://cloud.umami.is/script.js" data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0" />
         )}
       </head>
-      <body className="bg-background min-h-screen flex flex-col">
+      <body className="bg-background min-h-screen flex flex-col font-sans antialiased">
         <FestiveParticles />
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
           <Navbar />

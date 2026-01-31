@@ -1,8 +1,11 @@
-@import 'tailwindcss';
+@import "tailwindcss";
 
 @custom-variant dark (&:is(.dark *));
 
 @theme {
+  --font-sans: "Geist Mono", "Geist Mono Fallback";
+  --font-mono: "Geist Mono", "Geist Mono Fallback";
+
   --breakpoint-*: initial;
   --breakpoint-sm: 376px;
   --breakpoint-md: 768px;
