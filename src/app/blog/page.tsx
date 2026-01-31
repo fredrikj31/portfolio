@@ -15,7 +15,7 @@ export default async function BlogPage() {
   const blogPosts = await blog.listBlogPosts({});
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold mb-4">Blog</h1>
       <p className="text-xl text-muted-foreground mb-8">
         Thoughts on software development, tech trends, and personal growth.
