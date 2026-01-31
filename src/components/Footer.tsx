@@ -20,6 +20,7 @@ export default function Footer() {
             target="_blank"
             href="https://twitter.com/fredrikj31"
             className="text-muted-foreground hover:text-primary"
+            data-umami-event="footer-social-twitter"
           >
             <Twitter className="size-6" />
             <span className="sr-only">Twitter</span>
@@ -28,6 +29,7 @@ export default function Footer() {
             target="_blank"
             href="https://linkedin.com/in/fredrik-johansen/"
             className="text-muted-foreground hover:text-primary"
+            data-umami-event="footer-social-linkedin"
           >
             <LinkedIn className="size-6" />
             <span className="sr-only">LinkedIn</span>
@@ -36,6 +38,7 @@ export default function Footer() {
             target="_blank"
             href="https://github.com/fredrikj31"
             className="text-muted-foreground hover:text-primary"
+            data-umami-event="footer-social-github"
           >
             <Github className="size-6" />
             <span className="sr-only">GitHub</span>
