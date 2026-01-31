@@ -14,7 +14,7 @@ export default function Footer() {
 
   return (
     <footer className="border-t py-6 mt-auto w-full print:hidden">
-      <div className="container mx-auto px-4 flex flex-col items-center gap-4">
+      <div className="mx-auto px-4 flex flex-col items-center gap-4">
         <div className="flex gap-4">
           <Link
             target="_blank"
