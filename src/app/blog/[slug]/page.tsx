@@ -5,11 +5,13 @@ import { PortableText } from "@portabletext/react";
 import { richTextComponents } from "@/src/utils/richTextComponents";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, Calendar, ChevronRight, Clock, Tag } from "lucide-react";
+import { ArrowLeft, Calendar, Clock, Tag } from "lucide-react";
+import Giscus from "@giscus/react";
 import { Badge } from "@/shadcn/components/ui/badge";
 import { Button } from "@/shadcn/components/ui/button";
 import { Separator } from "@/shadcn/components/ui/separator";
 import { BlogSeriesCard } from "./components/BlogSeriesCard";
+import { CommentSection } from "@/src/components/CommentSection";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -118,6 +120,10 @@ export default async function BlogPostPage({ params }: Props) {
           </Button>
         </div>
       </footer>
+
+      <section>
+        <CommentSection />
+      </section>
     </article>
   );
 }
