@@ -64,7 +64,7 @@ export default async function BlogPostSeriesPage({ params }: Props) {
                     {blogPost.previewText}
                   </p>
                   <div className="flex flex-wrap gap-2">
-                    {blogPost.tags.map((tag) => (
+                    {(blogPost.tags ?? []).map((tag) => (
                       <Badge key={tag} variant="secondary">
                         {tag}
                       </Badge>

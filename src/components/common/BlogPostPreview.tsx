@@ -21,9 +21,9 @@ export const BlogPostPreview = ({ blogPostPreview }: BlogPostPreviewProps) => {
           </ins>{" "}
           · {blogPostPreview.readTimeInMinutes} min read
         </p>
-        {blogPostPreview.tags.length > 0 && (
+        {(blogPostPreview.tags ?? []).length > 0 && (
           <div className="flex flex-row gap-1">
-            {blogPostPreview.tags.map((tag) => (
+            {(blogPostPreview.tags ?? []).map((tag) => (
               <Link key={tag} href={`/blog/tag/${tag.toLowerCase().trim().replaceAll(" ", "-")}`}>
                 <Badge className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">{tag}</Badge>
               </Link>

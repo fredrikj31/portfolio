@@ -35,7 +35,7 @@ export default async function BlogPage() {
                 {blogPost.previewText}
               </p>
               <div className="flex flex-wrap gap-2">
-                {blogPost.tags.map((tag) => (
+                {(blogPost.tags ?? []).map((tag) => (
                   <span key={tag} className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">
                     {tag}
                   </span>
