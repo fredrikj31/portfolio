@@ -20,7 +20,7 @@ export const client = createClient({
   projectId: process.env.SANITY_PROJECT_ID,
   dataset: process.env.SANITY_DATASET,
   apiVersion: "2022-03-25",
-  useCdn: false,
+  useCdn: true,
   token: process.env.SANITY_VIEWER_TOKEN,
   stega: {
     studioUrl: process.env.SANITY_STUDIO_URL,
