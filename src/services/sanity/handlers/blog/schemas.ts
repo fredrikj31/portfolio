@@ -26,7 +26,7 @@ export const BlogPostPreviewSchema = z.object({
   publishedAt: z.string(),
   readTimeInMinutes: z.number(),
   previewText: z.string(),
-  tags: z.string().array(),
+  tags: z.string().array().nullable(),
 });
 export type BlogPostPreview = z.infer<typeof BlogPostPreviewSchema>;
 
