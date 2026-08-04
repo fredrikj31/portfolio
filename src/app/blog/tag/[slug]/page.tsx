@@ -19,7 +19,7 @@ export default async function BlogPostTagsPage({ params }: Props) {
   return (
     <>
       <div className="mt-10">
-        <h1 className="text-4xl text-light-header dark:text-dark-header mb-3">Tagged: &quot;{slug}&quot;📌</h1>
+        <h1 className="text-4xl font-bold tracking-tight text-foreground mb-3">Tagged: &quot;{slug}&quot;</h1>
         <div className="flex flex-col gap-5">
           {blogPosts.map((blogPost, index) => (
             <BlogPostPreview key={index} blogPostPreview={blogPost} />

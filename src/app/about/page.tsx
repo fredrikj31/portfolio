@@ -11,15 +11,17 @@ export default async function AboutPage() {
   const aboutContent = await about.getAboutContent();
 
   return (
-    <PortableText
-      value={aboutContent.content}
-      components={richTextComponents}
-      onMissingComponent={(message, options) => {
-        console.error(message, {
-          type: options.type,
-          nodeType: options.nodeType,
-        });
-      }}
-    />
+    <div className="max-w-3xl mx-auto py-8 [&_p]:text-lg [&_li]:text-lg [&_blockquote]:text-lg">
+      <PortableText
+        value={aboutContent.content}
+        components={richTextComponents}
+        onMissingComponent={(message, options) => {
+          console.error(message, {
+            type: options.type,
+            nodeType: options.nodeType,
+          });
+        }}
+      />
+    </div>
   );
 }

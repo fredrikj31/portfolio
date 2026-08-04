@@ -60,7 +60,7 @@ export default async function ResumePage() {
               <div className="flex items-center gap-2" key={`link-${index}`}>
                 <LinkIcon icon={icon} className="h-4 w-4 print:text-neutral-600" />
                 {link ? (
-                  <a className="print:text-neutral-600" target="_blank" href={link}>
+                  <a className="text-link hover:underline print:text-neutral-600" target="_blank" href={link}>
                     {text}
                   </a>
                 ) : (
