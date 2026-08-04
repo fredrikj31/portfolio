@@ -12,10 +12,12 @@ export default async function BlogPage() {
   return (
     <>
       <div className="mt-10">
-        <h1 className="text-4xl text-light-header dark:text-dark-header mb-3">Testimonials🎓</h1>
-        {testimonials.map((testimonial, index) => (
-          <Testimonial key={index} testimonial={testimonial} />
-        ))}
+        <h1 className="text-4xl font-bold tracking-tight text-foreground mb-3">Testimonials</h1>
+        <div className="grid gap-6 md:grid-cols-2">
+          {testimonials.map((testimonial, index) => (
+            <Testimonial key={index} testimonial={testimonial} />
+          ))}
+        </div>
       </div>
     </>
   );

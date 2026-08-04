@@ -12,8 +12,8 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
     code: ({ value }) => {
       const highlightedCode = hljs.highlightAuto(value.code, [value.language]);
       return (
-        <pre className="p-2 rounded my-1">
-          <code dangerouslySetInnerHTML={{ __html: highlightedCode.value }} />
+        <pre className="my-4 overflow-x-auto">
+          <code className="hljs rounded font-mono" dangerouslySetInnerHTML={{ __html: highlightedCode.value }} />
         </pre>
       );
     },
@@ -21,31 +21,37 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
       const rows: { cells: string[] }[] = value.rows;
       const headerRow = rows[0];
       return (
-        <table className="table-auto w-full my-1">
-          <thead className="bg-light-header/20 dark:bg-dark-header/20">
-            <tr>
-              {headerRow.cells.map((headerRowCell: string, index) => (
-                <th key={index}>{headerRowCell}</th>
-              ))}
-            </tr>
-          </thead>
-          <tbody className="[&>*:nth-child(even)]:bg-light-header/10 dark:[&>*:nth-child(even)]:bg-dark-header/10">
-            {rows.slice(1).map((row, index) => (
-              <tr key={index}>
-                {row.cells.map((rowCell, index) => (
-                  <td key={index}>{rowCell}</td>
+        <div className="overflow-x-auto my-4">
+          <table className="table-auto w-full my-1">
+            <thead className="bg-muted">
+              <tr>
+                {headerRow.cells.map((headerRowCell: string, index) => (
+                  <th key={index}>{headerRowCell}</th>
                 ))}
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="[&>*:nth-child(even)]:bg-muted/50">
+              {rows.slice(1).map((row, index) => (
+                <tr key={index}>
+                  {row.cells.map((rowCell, index) => (
+                    <td key={index}>{rowCell}</td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       );
     },
     latex: ({ value }) => {
       const renderedKatex = katex.renderToString(value.body, {
         output: "mathml",
       });
-      return <p className="my-1 text-center" dangerouslySetInnerHTML={{ __html: renderedKatex }} />;
+      return (
+        <div className="overflow-x-auto my-1">
+          <p className="text-center" dangerouslySetInnerHTML={{ __html: renderedKatex }} />
+        </div>
+      );
     },
     image: ({ value }) => {
       return (
@@ -70,32 +76,34 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
   marks: {
     em: ({ children }) => <em className="">{children}</em>,
     strong: ({ children }) => <strong className="font-bold">{children}</strong>,
-    highlight: ({ children }) => <mark className="bg-highlight">{children}</mark>,
+    highlight: ({ children }) => <mark className="bg-highlight text-black">{children}</mark>,
     s: ({ children }) => <s className="line-through">{children}</s>,
-    code: ({ children }) => <code className="px-1 font-semibold">{children}</code>,
+    code: ({ children }) => <code className="px-1.5 py-0.5 rounded bg-muted font-mono text-sm">{children}</code>,
     link: ({ value, children }) => {
       return (
-        <a className="text-blue-500 underline" target="_blank" href={value.href}>
+        <a className="text-link underline" target="_blank" href={value.href}>
           {children}
         </a>
       );
     },
   },
   list: {
-    bullet: ({ children }) => <ul className="list-disc list-inside my-1">{children}</ul>,
-    number: ({ children }) => <ol className="list-decimal list-inside my-1">{children}</ol>,
+    bullet: ({ children }) => <ul className="list-disc list-outside pl-5 my-4 space-y-2">{children}</ul>,
+    number: ({ children }) => <ol className="list-decimal list-outside pl-5 my-4 space-y-2">{children}</ol>,
   },
   block: {
     h1: ({ children }) => (
-      <h1 className="text-4xl mb-5 mt-10 font-bold leading-tight tracking-tight text-balance">{children}</h1>
+      <h1 className="text-4xl mb-5 mt-10 font-bold leading-tight tracking-tight text-balance font-mono">{children}</h1>
     ),
-    h2: ({ children }) => <h2 className="mb-4 mt-8 text-3xl font-bold tracking-tight">{children}</h2>,
-    h3: ({ children }) => <h3 className="mb-3 mt-6 text-2xl font-semibold tracking-tight">{children}</h3>,
-    h4: ({ children }) => <h4 className="mb-2 mt-4 text-xl font-semibold tracking-tight">{children}</h4>,
-    h5: ({ children }) => <h5 className="text-lg mb-1 mt-2 font-semibold tracking-tight">{children}</h5>,
-    h6: ({ children }) => <h6>{children}</h6>,
+    h2: ({ children }) => <h2 className="mb-4 mt-8 text-3xl font-bold tracking-tight font-mono">{children}</h2>,
+    h3: ({ children }) => <h3 className="mb-3 mt-6 text-2xl font-semibold tracking-tight font-mono">{children}</h3>,
+    h4: ({ children }) => <h4 className="mb-2 mt-4 text-xl font-semibold tracking-tight font-mono">{children}</h4>,
+    h5: ({ children }) => <h5 className="text-lg mb-1 mt-2 font-semibold tracking-tight font-mono">{children}</h5>,
+    h6: ({ children }) => <h6 className="font-mono">{children}</h6>,
     normal: ({ children }) => <p className="mb-6 leading-relaxed">{children}</p>,
-    blockquote: ({ children }) => <blockquote className="px-2 py-1 my-8 border-l-4 rounded">{children}</blockquote>,
+    blockquote: ({ children }) => (
+      <blockquote className="px-4 py-2 my-8 border-l-4 border-border bg-muted/40 rounded">{children}</blockquote>
+    ),
     hr: () => <hr className="my-2 border" />,
   },
 };

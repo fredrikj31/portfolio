@@ -36,8 +36,8 @@ export function ModeToggle() {
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="icon" className="size-8 cursor-pointer">
-          <Sun className="h-2 w-2 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-          <Moon className="absolute h-2 w-2 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <Sun className="h-4 w-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-4 w-4 rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
           <span className="sr-only">Toggle theme</span>
         </Button>
       </DropdownMenuTrigger>
@@ -62,18 +62,18 @@ export const Navbar = () => {
 
   return (
     <header className="w-full border-b bg-background/95 print:hidden px-4">
-      <div className="max-w-7xl mx-auto flex h-14 items-center">
+      <div className="max-w-5xl mx-auto flex h-14 items-center">
         <div className="mr-4 hidden md:flex justify-between w-full">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
+          <Link href="/" className="mr-6 flex items-center space-x-2 font-mono">
             <span className="hidden font-bold sm:inline-block">Fredrik Johansen</span>
           </Link>
-          <nav className="flex items-center space-x-6 text-sm font-medium">
+          <nav className="flex items-center space-x-6 text-sm font-medium font-mono">
             {navItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={`transition-colors hover:text-foreground/80 ${
-                  pathname === item.href ? "text-foreground" : "text-foreground/60"
+                  pathname === item.href ? "text-link" : "text-foreground/60"
                 }`}
               >
                 {item.label}
@@ -96,13 +96,13 @@ export const Navbar = () => {
               <SheetTitle></SheetTitle>
               <SheetDescription></SheetDescription>
             </SheetHeader>
-            <nav className="flex flex-col space-y-3">
+            <nav className="flex flex-col space-y-3 font-mono">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={`transition-colors hover:text-foreground/80 ${
-                    pathname === item.href ? "text-foreground" : "text-foreground/60"
+                    pathname === item.href ? "text-link" : "text-foreground/60"
                   }`}
                 >
                   {item.label}

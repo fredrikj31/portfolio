@@ -6,6 +6,7 @@ import { richTextComponents } from "@/src/utils/richTextComponents";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Layers } from "lucide-react";
 import Link from "next/link";
+import { Badge } from "@/shadcn/components/ui/badge";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ export default async function ProjectPage({ params }: Props) {
   }
 
   return (
-    <article className="max-w-5xl mx-auto py-8 md:px-6">
+    <article className="max-w-3xl mx-auto py-8 md:px-6 [&_p]:text-lg [&_li]:text-lg [&_blockquote]:text-lg">
       <Link href="/projects" className="inline-flex items-center text-sm text-muted-foreground hover:text-primary mb-8">
         <ArrowLeft className="mr-2 h-4 w-4" />
         Back to Projects
@@ -83,9 +84,9 @@ export default async function ProjectPage({ params }: Props) {
             </div>
             <div className="flex flex-row gap-1">
               {projectPost.techstack.map((tech, index: number) => (
-                <span key={index} className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">
+                <Badge key={index} variant="secondary">
                   {tech}
-                </span>
+                </Badge>
               ))}
             </div>
           </div>

@@ -68,7 +68,7 @@ export default async function Home() {
         <section>
           <h2 className="text-2xl font-semibold mb-4">Testimonials</h2>
           <div className="flex flex-col gap-4 w-full items-center">
-            <div className="flex flex-row gap-6 w-full">
+            <div className="grid gap-6 md:grid-cols-2 w-full">
               {homeContent.testimonials.map((testimonial, index) => (
                 <Testimonial key={index} testimonial={testimonial} />
               ))}

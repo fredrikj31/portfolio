@@ -1,3 +1,4 @@
+import { Badge } from "@/shadcn/components/ui/badge";
 import { Button } from "@/shadcn/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/shadcn/components/ui/card";
 import { Project } from "@/src/services/sanity/handlers/project/schemas";
@@ -24,15 +25,15 @@ export const ProjectPreview = ({ projectPreview }: ProjectPreviewProps) => {
         </p>
         <div className="flex flex-wrap gap-2">
           {projectPreview.techstack.map((tag) => (
-            <span key={tag} className="bg-secondary text-secondary-foreground px-2 py-1 rounded-full text-xs">
+            <Badge key={tag} variant="secondary">
               {tag}
-            </span>
+            </Badge>
           ))}
         </div>
       </CardContent>
       <CardFooter className="flex justify-between items-center mt-auto">
         {projectPreview.readTimeInMinutes && (
-          <div className="text-sm text-muted-foreground">{projectPreview.readTimeInMinutes} min read</div>
+          <div className="text-sm text-muted-foreground font-mono">{projectPreview.readTimeInMinutes} min read</div>
         )}
         <Button variant="ghost" size="sm" asChild>
           <Link href={`/projects/${projectPreview.slug}`}>
