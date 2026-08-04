@@ -7,6 +7,7 @@ import { notFound } from "next/navigation";
 import { ArrowLeft, Clock, Layers } from "lucide-react";
 import Link from "next/link";
 import { Badge } from "@/shadcn/components/ui/badge";
+import { CommentSection } from "@/src/components/CommentSection";
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -102,6 +103,10 @@ export default async function ProjectPage({ params }: Props) {
           });
         }}
       />
+
+      <section>
+        <CommentSection />
+      </section>
     </article>
   );
 }
