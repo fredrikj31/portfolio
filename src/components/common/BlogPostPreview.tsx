@@ -22,7 +22,7 @@ export const BlogPostPreview = ({ blogPostPreview }: BlogPostPreviewProps) => {
           · {blogPostPreview.readTimeInMinutes} min read
         </p>
         {(blogPostPreview.tags ?? []).length > 0 && (
-          <div className="flex flex-row gap-1">
+          <div className="flex flex-row flex-wrap gap-1">
             {(blogPostPreview.tags ?? []).map((tag) => (
               <Link key={tag} href={`/blog/tag/${tag.toLowerCase().trim().replaceAll(" ", "-")}`}>
                 <Badge variant="secondary">{tag}</Badge>
