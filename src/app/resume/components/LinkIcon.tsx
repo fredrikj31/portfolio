@@ -4,13 +4,14 @@ import { Twitter } from "@/src/components/icons/Twitter";
 import { ResumeLinkIconType } from "@/src/services/sanity/handlers/resume/schemas";
 import clsx from "clsx";
 import { Mail, MapPin, Phone } from "lucide-react";
+import type { ReactElement } from "react";
 
 interface LinkIconProps {
   icon: ResumeLinkIconType;
   className?: string;
 }
 
-export const LinkIcon = ({ icon, className }: LinkIconProps): JSX.Element | null => {
+export const LinkIcon = ({ icon, className }: LinkIconProps): ReactElement | null => {
   switch (icon) {
     case "phone":
       return <Phone className={clsx(className)} />;
