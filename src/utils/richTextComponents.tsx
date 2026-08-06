@@ -6,6 +6,7 @@ import Image from "next/image";
 import { getImageDimensions } from "@sanity/asset-utils";
 import hljs from "highlight.js";
 import "highlight.js/styles/github-dark.css";
+import { MermaidDiagram } from "@/src/components/MermaidDiagram";
 
 export const richTextComponents: Partial<PortableTextReactComponents> = {
   types: {
@@ -52,6 +53,9 @@ export const richTextComponents: Partial<PortableTextReactComponents> = {
           <p className="text-center" dangerouslySetInnerHTML={{ __html: renderedKatex }} />
         </div>
       );
+    },
+    mermaidDiagram: ({ value }) => {
+      return <MermaidDiagram code={value.code} />;
     },
     image: ({ value }) => {
       return (
