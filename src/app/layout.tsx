@@ -48,7 +48,11 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         {process.env.NODE_ENV === "production" && (
-          <Script defer src="https://cloud.umami.is/script.js" data-website-id="870dd235-bcfa-4650-bedc-0ec2bd5fe1a0" />
+          <Script
+            defer
+            src="https://analytics.fredrikjohansen.dev/script.js"
+            data-website-id="66f1cdbf-3e1a-40ba-a652-ce9e8061408e"
+          />
         )}
       </head>
       <body className="bg-background min-h-screen flex flex-col font-sans antialiased">
