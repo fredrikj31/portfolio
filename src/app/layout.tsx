@@ -48,11 +48,18 @@ export default async function RootLayout({ children }: { children: React.ReactNo
     <html lang="en" suppressHydrationWarning className={`${geistSans.variable} ${geistMono.variable}`}>
       <head>
         {process.env.NODE_ENV === "production" && (
-          <Script
-            defer
-            src="https://analytics.fredrikjohansen.dev/script.js"
-            data-website-id="66f1cdbf-3e1a-40ba-a652-ce9e8061408e"
-          />
+          <>
+            <Script
+              defer
+              src="https://analytics.fredrikjohansen.dev/script.js"
+              data-website-id="66f1cdbf-3e1a-40ba-a652-ce9e8061408e"
+            />
+            <Script
+              defer
+              src="https://analytics.fredrikjohansen.dev/recorder.js"
+              data-website-id="66f1cdbf-3e1a-40ba-a652-ce9e8061408e"
+            />
+          </>
         )}
       </head>
       <body className="bg-background min-h-screen flex flex-col font-sans antialiased">
